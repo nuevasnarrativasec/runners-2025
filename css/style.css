@@ -1,0 +1,1196 @@
+@font-face {
+    font-family: 'Druk Wide Medium Trial';
+    src: url('../fonts/DrukWide-MediumItalic.woff2') format('woff2'),
+        url('../fonts/DrukWide-MediumItalic.woff') format('woff');
+    font-weight: 500;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Druk Wide Bold Trial';
+    src: url('../fonts/DrukWide-BoldItalic.woff2') format('woff2'),
+        url('../fonts/DrukWide-BoldItalic.woff') format('woff');
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Druk Wide';
+    src: url('../fonts/DrukWide-Bold.woff2') format('woff2'),
+        url('../fonts/DrukWide-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: '.';
+    src: url('../fonts/2dfadfc01a54cae1020852bdf97d432e.woff2') format('woff2'),
+        url('../fonts/2dfadfc01a54cae1020852bdf97d432e.woff') format('woff');
+    font-weight: 900;
+    font-style: italic;
+    font-display: swap;
+}
+
+.clear{
+    clear: both;
+}
+
+body, html {    
+    margin: 0;    
+    padding: 0;    
+    font-style: normal;
+    font-display: swap;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.main-header{
+    background: url('../img/bg-header.jpg?v2') no-repeat center top;
+    background-size: 100%;
+}
+
+img.logos{
+    display: block;
+    margin: 0 auto;
+    max-width: 300px;
+    padding-top: 180px;
+}
+
+/* --- Estilos del Contenedor del Quiz --- */
+    h1 {
+        font: 2rem/1.1 'Druk Wide';
+            color: #1a008e;
+            font-weight: 900;
+            font-style: italic;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .quiz-container {
+            margin: 10px auto;
+            width: 320px;
+            position: relative;
+            perspective: 1000px;
+        }
+
+        .card {
+            background-color: #f08323; /* Naranja */
+            border-radius: 15px;
+            padding: 30px 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            display: none; /* Oculto por defecto */
+            animation: fadeIn 0.5s;
+        }
+
+        .card.active {
+            display: block;
+        }
+
+        .card h2 {
+            font: 1.3rem/1.2 '.';
+            font-weight: 900;
+            font-style: italic;
+            text-transform: uppercase;
+            margin-top: 0;
+            color: #000;
+        }
+
+        /* Opciones de respuesta */
+        .options-group {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 20px;
+            border-top: 2px solid #000;
+            padding-top: 20px;
+        }
+
+        .option {
+            font: 1rem/1.1 'Druk Wide';
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            font-weight: 800;
+            font-style: italic;
+            padding: 10px;
+            border-bottom: 2px solid #000;
+            transition: background 0.2s;
+        }
+
+        .option:hover {
+            background-color: rgba(255,255,255,0.2);
+        }
+
+        /* Estilo del radio button simulado */
+        .circle {
+            height: 15px;
+            margin-right: 5px;
+            width: 15px;
+            background-color: #fff;
+            border: 3px solid #000;
+            border-radius: 50%;
+            margin-right: 0;
+            display: inline-block;
+            vertical-align: top;
+        }
+
+        .option.selected .circle::after {
+            content: '';
+            width: 10px;
+            height: 10px;
+            background-color: #2e9aff; /* Azul claro para selección */
+            border-radius: 50%;
+        }
+
+        .option span{
+            max-width: 70%;
+            display: inline-block;
+            vertical-align: top;           
+        }
+
+        /* Botones de navegación */
+        .nav-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+            float: right;
+        }
+        
+        .arrow-icon {
+            width: 0; 
+            height: 0; 
+            border-top: 15px solid transparent;
+            border-bottom: 15px solid transparent;
+            border-left: 25px solid #000;
+        }
+
+        .btn-mandar {
+            background-color: #ccc;
+            color: #fff;
+            font-weight: 900;
+            text-transform: uppercase;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            width: 100%;
+            font-size: 1.2rem;
+            margin-top: 20px;
+            cursor: not-allowed;
+        }
+
+        .btn-mandar.ready {
+            background-color: #fff; /* Botón activo */
+            color: #f08323;
+            cursor: pointer;
+        }
+
+        /* --- Estilos de RESULTADOS (Tarjeta Azul) --- */
+        .result-card {
+            background-color: #1a008e; /* Azul profundo */
+            color: white;
+            margin: 20px auto 0;
+            border-radius: 15px;
+            padding: 40px 20px;
+            text-align: center;
+            display: none;
+            width: 320px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+
+        .result-card h3 {
+            font: 1.5rem/1.1 'Druk Wide';
+            text-transform: uppercase;
+            margin: 0;
+            font-weight: 900;
+        }
+
+        .icon-runner {
+            font-size: 4rem; /* Simulando el icono */
+            margin: 20px 0;
+            display: block;
+        }
+            .icon-runner img{
+                max-width: 80px;
+            }
+
+        .category-title {
+            font: 1.5rem/1.1 'Druk Wide';
+            font-weight: 900;
+            font-style: italic;
+            margin: 10px 0;
+            text-transform: uppercase;
+        }
+
+        .divider {
+            height: 2px;
+            background-color: #fff;
+            width: 80%;
+            margin: 20px auto;
+        }
+
+        .result-desc {
+            font: 1.1rem/1.3 'Druk Wide';
+            font-weight: 900;
+            font-style: italic;
+            text-transform: uppercase;
+            line-height: 1.2;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateX(20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+.main-bajada{
+
+}   
+    .main-bajada img{
+        margin-bottom: -4px;
+    }
+
+.main-corredores{
+    background-color: #240290;
+    padding-bottom: 60px;
+}
+    .main-corredores h3{
+        color: #fff;
+        font: 2.8rem/1.1 'Druk Wide';
+        margin: 0 auto 20px;
+        max-width: 560px;
+        text-align: center;
+        text-transform: uppercase;
+    }   
+
+        /* --- Navegación de Rostros --- */
+        .profiles-nav {
+            display: block;
+            justify-content: space-between;
+            margin-bottom: 30px;
+            padding-bottom: 5px;
+            text-align: center;
+        }
+
+        .profile-thumb {
+            display: inline-block;
+            vertical-align: top;
+            width: 125px;
+            height: 150px;
+            margin: 0 5px;
+            overflow: hidden;
+            cursor: pointer;
+            opacity: 0.6;
+            transition: all 0.3s ease;
+            position: relative;
+            border: 2px solid transparent;
+        }
+
+        .profile-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Estado Activo (Foto seleccionada) */
+        .profile-thumb.active {
+            opacity: 1;
+        }
+
+        /* La línea blanca debajo de la foto activa */
+        .profile-thumb.active::after {
+            content: '';
+            position: absolute;
+            bottom: -10px; /* Ajustar posición de la línea */
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: white;
+        }
+
+        .profile-thumb:hover {
+            opacity: 1;
+        }
+
+        /* --- Sección de Contenido Dinámico --- */
+        .runner-info h2 {
+            font: 1.4rem/1.1 'arial';
+            color: #f08323; 
+            margin: 0;
+            text-align: center;
+        }
+
+        .runner-info p {
+            font: 1.2rem/1.1 'arial';
+            margin: 5px 0 20px 0;
+            font-size: 0.9rem;
+            color: #ccc;
+            text-align: center;
+        }
+
+        /* Contenedor del Video Iframe */
+        .video-container {
+            width: 20%;
+            height: 500px; 
+            background-color: #000;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        .video-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        h4.ruta{
+            color: #f08323;
+            font: 1.4rem / 1.1 'arial';            
+            margin: 30px auto 10px;
+            text-align: center;
+        }
+
+        /* Imagen de Estadísticas */
+        .stats-image {
+            margin: 0 auto;
+            max-width: 350px;
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 10px;
+        }
+
+        /* Animación simple para suavizar el cambio */
+        .fade-in {
+            animation: fadeInAnimation 0.5s ease-in-out;
+        }
+
+        @keyframes fadeInAnimation {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+.main-rutas{
+    padding: 50px 0 0;
+}
+    .silueta-runner-azul{
+        display: block;
+        margin: 0 auto;
+        max-width: 60px;
+    }
+    .main-rutas h3{
+        font: 2.8rem / 1.1 'Druk Wide';
+        font-style: italic;
+        margin: 10px auto;
+        max-width: 400px;
+        text-align: center;
+        text-transform: uppercase;
+    }
+    .main-rutas p{
+        font: 1rem / 1.2 'arial';
+        margin: 15px auto;
+        max-width: 400px;
+        text-align: center;
+    }
+
+    /* --- BOTONES DE NAVEGACIÓN --- */
+        .nav-buttons {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto; /* Permite scroll horizontal en móviles si no caben */
+            padding-bottom: 30px;
+            max-width: 500px;
+            margin: 0 auto;
+            justify-content: space-between;
+        }
+
+        .nav-btn {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 50px; /* Borde de pastilla */
+            padding: 10px 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.3s ease;
+            color: #555;
+            flex-grow: 1; /* Para que ocupen espacio equitativo */
+            text-align: center;
+        }
+
+        .nav-btn:hover {
+            border-color: #f08323;
+            color: #f08323;
+        }
+
+        /* Botón Activo (Naranja) */
+        .nav-btn.active {
+            background-color: #f08323;
+            color: white;
+            border-color: #f08323;
+            box-shadow: 0 4px 10px rgba(240, 131, 35, 0.4);
+        }
+
+        /* --- CONTENIDO DINÁMICO --- */
+        .route-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .route-title {
+            color: #f08323; /* Naranja */
+            font: 1.3rem/1.1 'arial';
+            text-transform: uppercase;
+            margin: 0 0 5px 0;
+        }
+
+        #dynamic-area .route-desc {
+            font-size: 1rem;
+            color: #888;
+            margin: 10px auto;
+            text-align: center;
+        }
+
+        /* Mapa */
+        .map-container {
+            width: 100%;
+            overflow: hidden;
+            max-width: 400px;
+            margin: 0 auto 30px;
+        }
+
+        .map-img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* --- ESTADÍSTICAS --- */
+        .stats-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-width: 400px;
+            margin: 10px auto;
+        }
+
+        .stat-row {
+            width: 100%;
+        }
+
+        .stat-header {
+            display: flex;
+            font-family: arial;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 5px;
+            font-size: 1.1rem;
+            color: #333;
+        }
+        
+        .stat-label {
+            font-weight: 400;
+            text-transform: uppercase;
+        }
+
+        .stat-value {
+            font-weight: 700;
+        }
+
+        /* Barras de Progreso */
+        .progress-bg {
+            width: 100%;
+            height: 12px;
+            background-color: #eee;
+            border-radius: 10px;
+            border: 1px solid #ddd;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background-color: #f08323; /* Naranja */
+            width: 0%; /* Se llena con JS */
+            border-radius: 10px;
+            transition: width 1s ease-out;
+        }
+
+        /* Estrellas */
+        .stars {
+            color: #f08323;
+            letter-spacing: 5px;
+            font-size: 1.5rem;
+        }
+        
+        .divider-stats {
+            height: 1px;
+            background-color: #ccc;
+            margin-top: 20px;
+        }
+        
+        /* Animación suave al cambiar contenido */
+        .fade-content {
+            animation: fadeIn 0.4s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0.5; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+.main-anatomia{
+    background: #24028f;
+    text-align: center;
+}
+    img.titulo-anatomia{
+        margin-top: -4px;
+    }
+    .main-anatomia h3{
+        color: #fff;
+        font: 2.8rem / 1.1 'Druk Wide';
+        font-style: italic;
+        margin: 10px auto 30px;
+        max-width: 450px;
+        text-align: center;
+        text-transform: uppercase;
+    }
+    .main-anatomia h4{
+        color: #FF6C00;
+        font: 1.3rem / 1.1 'arial';
+        text-align: center;
+        text-transform: uppercase;
+    }
+    .box-video-especialista{
+        box-sizing: border-box;
+        display: inline-block;
+        margin: 0 10px 60px;
+        min-width: 400px;
+        text-align: center;
+        vertical-align: top;
+    }
+        .box-video-especialista p{
+            color: #fff;
+            font: 1.2rem / 1.1 'arial';
+            font-weight: 500;
+            margin: 0 auto 20px;
+            min-height: 43px;
+            max-width: 360px;
+            padding: 0 20px;
+        }
+        .box-video-especialista .box-iframe{
+            margin: 0 auto;
+            max-width: 340px;
+        }
+.main-universo{
+    background-color: #24028f;
+    background-image: url('../img/bg-top-universo.webp');
+    background-position: center top;
+    background-repeat: no-repeat;
+    padding-top: 900px;
+}
+    .box-botonera-universo{
+        position: relative;
+    }
+        img.bg-universo{
+
+        }
+        .bg-planetas{
+            background: url('../img/planetas.webp') center top no-repeat ;
+            background-size: 100%;
+            height: 360px;
+            margin: 0 auto;
+            margin-top: -300px;            
+            position: relative;
+            width: 1200px;  
+        }
+
+    /* Estilo de los Botones */
+    .universo-btn {
+        padding: 10px;
+        border-radius: 50px; 
+        border: 0.5px solid #fff;
+        cursor: pointer;
+        font-family: 'arial';
+        font-size: 0.9rem;
+        min-width: 160px;        
+        transition: all 0.3s ease;
+        
+        background-color: #f08323; 
+        color: #000;
+    }
+        .universo-btn:nth-child(1){
+            left: 250px;
+            position: absolute;
+            top: 50px;
+        }
+        .universo-btn:nth-child(2){
+            right: 220px;
+            position: absolute;
+            top: 50px;
+        }
+        .universo-btn:nth-child(3){
+            left: 310px;
+            position: absolute;
+            top: 205px;
+        }
+        .universo-btn:nth-child(4){
+            right: 210px;
+            position: absolute;
+            top: 220px;
+        }
+
+    .universo-btn:hover {
+        background-color: #f08323; 
+        opacity: 0.9;
+    }
+
+    /* Estado ACTIVO (Botón blanco seleccionado) */
+    .universo-btn.active {
+        background-color: #fff;
+        color: #000;
+    }
+
+    /* --- ZONA DE CONTENIDO --- */
+    .contenido-inferior {
+        padding: 20px;
+        min-height: 200px;
+    }
+
+    .info-box {
+        display: none; /* Ocultos por defecto */
+        animation: fadeIn 0.5s ease;
+    }
+
+    /* Clase para mostrar el contenido */
+    .info-box.active-box {
+        display: block;
+    }
+
+    /* Animación suave */
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+.main-apps{
+    padding: 30px 0 0;
+}
+    .main-apps h3{
+        font: 1.8rem / 1.1 'Druk Wide';
+        font-style: italic;
+        margin: 10px auto;
+        max-width: 600px;
+        text-align: center;
+        text-transform: uppercase;
+    }
+
+    .apps-container {
+            max-width: 550px; 
+            margin: 40px auto;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 40px; 
+        }
+
+        /* --- TARJETA DE APP --- */
+        .app-card {
+            display: flex;
+            gap: 30px;
+            align-items: flex-start;
+            border-bottom: 1px solid #eee; /* Línea separadora opcional */
+            padding-bottom: 40px;
+        }
+
+        .app-card:last-child {
+            border-bottom: none;
+        }
+
+        /* Columna Izquierda: Icono y Nombre */
+        .app-visual {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 120px; /* Ancho fijo para alinear todo */
+            flex-shrink: 0;
+        }
+
+        .app-icon {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+
+        .app-name {
+            font: 1rem/1.1 arial;
+            font-weight: 900;
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        /* Columna Derecha: Información */
+        .app-info {
+            flex-grow: 1;
+        }
+
+        .app-desc {
+            font-family: arial;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+        /* Negritas para los títulos dentro del texto */
+        .label-bold {
+            font-weight: 700;
+        }
+
+        /* --- SECCIÓN DE RATING --- */
+        .ratings-row {
+            display: flex;
+            align-items: center;
+            gap: 30px; /* Espacio entre App Store y Google Play */
+            flex-wrap: wrap;
+        }
+
+        .rating-block {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .store-title {
+            font-family: arial;
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
+
+        .stars {
+            color: #c59b34; /* Color dorado/mostaza de la imagen */
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+        }
+        
+        /* Divisor vertical entre tiendas (solo en desktop) */
+        .divider-vertical {
+            width: 1px;
+            height: 40px;
+            background-color: #ccc;
+            display: block;
+        }
+
+        /* Responsive para móviles */
+        @media (max-width: 600px) {
+            .app-card {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 20px;
+            }
+            
+            .ratings-row {
+                justify-content: center;
+                gap: 20px;
+            }
+
+            .divider-vertical {
+                display: none; /* Ocultar línea en móvil */
+            }
+        }
+
+.main-libros{
+    background-color: #260682;
+    background-color: linear-gradient(180deg, rgba(38, 6, 130, 1) 0%, rgba(37, 2, 142, 1) 100%);
+    background-image: url('../img/bg-bottom-libros.jpg');
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    margin-top: -4px;
+    padding-bottom: 280px;
+}
+    .main-libros h3{
+        color: #fff;
+        font: 1.8rem / 1.1 'Druk Wide';
+        text-align: center;
+        font-style: italic;
+        margin: 0 auto;
+        padding-bottom: 30px;
+        text-transform: uppercase;
+    }
+
+    .books-container {
+            margin: 20px auto 40px;
+            max-width: 380px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            row-gap: 30px;
+            column-gap: 0;
+            position: relative;
+        }
+
+        /* --- Estilos de cada Libro --- */
+        .book-card {
+            max-width: 225px;
+            padding: 0 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start; /* Alineado a la izquierda */
+        }
+
+        /* Borde derecho SOLO para los elementos de la columna izquierda (impares) */
+        .book-card:nth-child(odd) {
+            border-right: 2px solid #00c3ff; /* Línea cian brillante */
+        }
+
+        /* Padding extra para separar del borde central */
+        .book-card:nth-child(odd) {
+            padding-right: 30px;
+        }
+        .book-card:nth-child(even) {
+            padding-left: 30px;
+        }
+
+        /* Imagen Portada */
+        .book-cover {
+            width: 100%;
+            max-width: 220px; /* Tamaño controlado */
+            height: auto;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5); /* Sombra para dar profundidad 3D */
+            margin-bottom: 25px;
+            align-self: center; /* Centrar la imagen en su columna */
+        }
+
+        /* Título del Libro */
+        .book-title {
+            color: #fff;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 1.5rem;
+            font-weight: 900; /* Extra bold */
+            line-height: 1.1;
+            margin: 0 0 10px 0;
+            text-transform: capitalize; /* Opcional */
+        }
+
+        /* Autor */
+        .book-author {
+            font-family: Arial, Helvetica, sans-serif;
+            color: #00c3ff; /* Color Cian/Celeste */
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        /* Descripción */
+        .book-desc {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            color: #e0e0e0;
+            font-weight: 400;
+        }
+
+        /* Responsive: En móviles poner una sola columna */
+        @media (max-width: 600px) {
+            .books-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .book-card:nth-child(odd) {
+                border-right: none;
+                padding-right: 0;
+                padding-bottom: 40px;
+                border-bottom: 2px solid #00c3ff; /* Línea horizontal en móvil */
+            }
+            
+            .book-card {
+                padding: 0;
+                align-items: center;
+                text-align: center;
+            }
+            
+            .book-cover {
+                margin-bottom: 20px;
+            }
+        }
+
+    .podcast-section {
+        max-width: 800px;
+        width: 100%;
+        margin: 0 auto;
+        text-align: center;
+        }
+
+        /* --- TARJETA DE PODCAST --- */
+        .podcast-card {
+            display: inline-block;
+            vertical-align: top;
+            text-align: center;
+            max-width: 300px;
+            margin: 0 20px 20px;
+        }
+
+        /* Imagen Circular */
+        .podcast-img-container {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 20px;
+        }
+
+        .podcast-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Texto */
+        .podcast-title {
+            color: #fff;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 2rem;
+            font-weight: 900; 
+            text-transform: uppercase;
+            margin: 10px 0;
+            line-height: 1.1;
+        }
+
+        .podcast-desc {
+            color: #fff;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 1rem;
+            line-height: 1.4;
+            font-weight: 400;
+            margin: 0 auto 15px;
+            max-width: 400px; /* Para que el texto no se estire demasiado */
+        }
+
+        /* --- BOTONES DE REDES --- */
+        .social-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .icon-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            border: none;
+            outline: none;
+        }
+
+        .icon-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+        }
+
+        /* Botón YouTube (Rojo con Play Azul Oscuro) */
+        .btn-youtube {
+            background-color: #ff0000;
+        }
+        
+        /* Botón Spotify (Verde con Ondas Oscuras) */
+        .btn-spotify {
+            background-color: #00ff41; /* Verde Spotify brillante */
+        }
+
+        /* Estilo de los SVGs internos */
+        .icon-svg {
+            width: 30px;
+            height: 30px;
+        }
+.main-influencers{
+    
+}
+    .main-influencers h3{
+        font: 1.8rem / 1.1 'Druk Wide';
+        font-style: italic;
+        margin: 0 auto;
+        max-width: 600px;
+        padding: 30px 0;
+        text-align: center;
+        text-transform: uppercase;
+    }
+    .profiles-container {
+            margin: 0 auto;
+            max-width: 450px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 40px; 
+        }
+
+        /* --- TARJETA DE PERFIL --- */
+        .profile-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        /* Imagen Circular */
+        .profile-img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%; /* Círculo perfecto */
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+
+        /* Nombre y Usuario */
+        .profile-name {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 1.5rem; /* Tamaño grande */
+            font-weight: 700; /* Bold */
+            color: #1a008e; /* Azul profundo característico */
+            margin: 0 0 10px 0;
+            line-height: 1.2;
+        }
+
+        /* Lista de detalles */
+        .profile-details {
+            list-style: none; /* Quitamos los bullets por defecto */
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 10px; /* Espacio entre líneas */
+        }
+
+        .profile-item {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 0.9rem;
+            line-height: 1.2;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            justify-content: center; /* Centramos el texto y el bullet */
+            gap: 10px; /* Separación entre el cuadradito y el texto */
+        }
+        
+
+        /* Responsive para móviles */
+        @media (max-width: 600px) {
+            .profile-name {
+                font-size: 1.5rem;
+            }
+            .profile-item {
+                font-size: 1rem;
+                text-align: center;
+                flex-direction: column; /* En móvil muy estrecho, apilar bullet */
+                gap: 5px;
+            }
+            .profile-item::before {
+                display: none; /* Opcional: En móviles a veces se ve mejor sin bullet si se centra */
+            }
+        }
+.main-calendario{
+    background-color: #25028e;
+    margin-top: -4px;
+    padding-bottom: 40px;
+    text-align: center;
+}
+    .main-calendario h3{
+        color: #fff;
+        font: 1.8rem / 1.1 'Druk Wide';
+        font-style: italic;
+        margin: 0 auto;
+        max-width: 600px;
+        padding: 30px 0 0;
+        text-align: center;
+        text-transform: uppercase;
+    }
+    .main-calendario h4{
+        color: #fff;
+        font: 1rem/1.1 'arial';
+    }
+
+    .calendar-container {
+            background-color: #fff;
+            max-width: 450px; /* Ancho similar al de una columna móvil */
+            margin: 20px auto;
+            width: 100%;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            text-align: left;
+        }
+
+        /* --- ESTILOS DE CADA EVENTO --- */
+        .event-item {
+            margin-bottom: 30px;
+            border-bottom: 1px solid #eee; /* Línea divisoria suave */
+            padding-bottom: 30px;
+        }
+
+        .event-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        /* Fecha y Hora */
+        .event-date {
+                font: 1.8rem / 1.1 'Druk Wide';
+            color: #1a008e; /* Azul oscuro */
+            font-weight: 900; /* Extra Bold */
+            font-size: 1rem;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+        /* Ubicación con Icono */
+        .event-location {
+            font: 1.2rem / 1.1 'Druk Wide';
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #1a008e;
+            font-weight: 800; /* Bold */
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .icon-pin {
+            width: 18px;
+            height: 18px;
+            fill: #1a008e; /* El icono toma el color azul */
+        }
+
+        /* Título del Evento */
+        .calendar-container .event-title {
+            color: #f08323; /* Naranja */
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 1.3rem;
+            font-style: normal;
+            margin: 0 0 10px 0;
+            line-height: 1.2;
+            padding: 0;
+            text-align: left;
+            text-transform: none;
+        }
+
+        /* Descripción */
+        .event-desc {
+            font-family: Arial, Helvetica, sans-serif;
+            color: #666; /* Gris oscuro para lectura */
+            font-size: 0.85rem;
+            line-height: 1.5;
+            margin: 0;
+            font-weight: 400;
+        }

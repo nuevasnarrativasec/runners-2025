@@ -1,0 +1,1206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Runners 2025</title>
+
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+
+    <div class="main-header">
+
+        <img src="./img/logos.png" alt="El Comercio | Eletrolight" width="100%" class="logos">
+
+        <h1 id="main-title">¿POR QUÉ CORRES TÚ?</h1>  
+
+        <div class="quiz-container" id="quiz-area">
+            <div class="card active" id="q1">
+                <h2>¿CUÁL ES TU RETO HOY?</h2>
+                <div class="options-group">
+                    <div class="option" onclick="selectOption(1, 3, event)">
+                        <div class="circle"></div> 
+                        <span>MEJORAR MI RENDIMIENTO</span>
+                    </div>
+                    <div class="option" onclick="selectOption(1, 2, event)">
+                        <div class="circle"></div> 
+                        <span>CONTROLAR MI PESO</span>
+                    </div>
+                    <div class="option" onclick="selectOption(1, 1, event)">
+                        <div class="circle"></div> 
+                        <span>DESESTRESARME</span>
+                    </div>
+                </div>
+                </div>
+
+            <div class="card" id="q2">
+                <h2>¿PARA QUÉ CORRES?</h2>
+                <div class="options-group">
+                    <div class="option" onclick="selectOption(2, 1, event)">
+                        <div class="circle"></div> 
+                        <span>PARA SENTIRME MEJOR</span>
+                    </div>
+                    <div class="option" onclick="selectOption(2, 2, event)">
+                        <div class="circle"></div> 
+                        <span>POR MI FAMILIA</span>
+                    </div>
+                    <div class="option" onclick="selectOption(2, 3, event)">
+                        <div class="circle"></div> 
+                        <span>QUIERO SER MEJOR ATLETA</span>
+                    </div>
+                </div>
+                </div>
+
+            <div class="card" id="q3">
+                <h2>¿ESTÁS DISPUESTO A MEJORAR?</h2>
+                <div class="options-group">
+                    <div class="option" onclick="selectOption(3, 3, event)">
+                        <div class="circle"></div> 
+                        <span>SÍ, A DARLO TODO</span>
+                    </div>
+                    <div class="option" onclick="selectOption(3, 2, event)">
+                        <div class="circle"></div> 
+                        <span>TENGO MUCHO QUE APRENDER</span>
+                    </div>
+                    <div class="option" onclick="selectOption(3, 1, event)">
+                        <div class="circle"></div> 
+                        <span>ME SIENTO COMPROMETIDO</span>
+                    </div>
+                </div>
+                </div>
+        </div>
+
+        <div class="result-card" id="res-salud">
+            <h3>CATEGORÍA</h3>
+            <span class="icon-runner">
+                <img src="./img/silueta-runner.png" alt="" width="100%">
+            </span>
+            <div class="category-title">SALUD</div>
+            <div class="divider"></div>
+            <div class="result-desc">
+                ESTÁS ENTRENANDO<br>PARA SENTIRTE<br>MEJOR
+            </div>
+        </div>
+
+        <div class="result-card" id="res-master">
+            <h3>CATEGORÍA</h3>
+            <span class="icon-runner">
+                <img src="./img/silueta-runner.png" alt="" width="100%">
+            </span>
+            <div class="category-title">MÁSTER</div>
+            <div class="divider"></div>
+            <div class="result-desc">
+                ESTÁS ENTRENANDO<br>PARA LA VIDA
+            </div>
+        </div>
+
+        <div class="result-card" id="res-elite">
+            <h3>CATEGORÍA</h3>
+            <span class="icon-runner">
+                <img src="./img/silueta-runner.png" alt="" width="100%">
+            </span>
+            <div class="category-title">ÉLITE</div>
+            <div class="divider"></div>
+            <div class="result-desc">
+                ESTÁS ENTRENANDO<br>PARA COMPETIR
+            </div>
+        </div>
+
+    </div>
+
+    <div class="main-bajada">
+        <img src="./img/bajada.webp" alt="" width="100%">
+    </div>
+
+    <div class="main-corredores">
+        <h3>
+            5 peruanos que la rompen en las pistas
+        </h3>
+
+        <div class="profiles-nav">
+            <div class="profile-thumb active" data-index="0" onclick="loadRunner(0)">
+                <img src="./img/corredor-1.jpg" alt="Corredor 1">
+            </div>
+            <div class="profile-thumb" data-index="1" onclick="loadRunner(1)">
+                <img src="./img/corredor-2.jpg" alt="Corredor 2">
+            </div>
+            <div class="profile-thumb" data-index="2" onclick="loadRunner(2)">
+                <img src="./img/corredor-3.jpg" alt="Corredor 3">
+            </div>
+            <div class="profile-thumb" data-index="3" onclick="loadRunner(3)">
+                <img src="./img/corredor-4.jpg" alt="Corredor 4">
+            </div>
+            <div class="profile-thumb" data-index="4" onclick="loadRunner(4)">
+                <img src="./img/corredor-5.jpg" alt="Corredor 5">
+            </div>
+        </div>
+
+        <div id="dynamic-content" class="fade-in">
+            <div class="runner-info">
+                <h2 id="runner-name">Nombre Corredor</h2>
+                <p id="runner-age">00 años</p>
+            </div>
+
+            <div class="video-container">
+                <iframe id="video-frame" src="" allowfullscreen></iframe>
+            </div>
+
+            <div>
+                <h4 class="ruta">Ruta habitual</h4>
+                <img id="stats-image" class="stats-image" src="" alt="Estadísticas y Ruta">
+            </div>
+        </div>
+
+    </div>
+
+    <div class="main-rutas">
+        <img src="./img/silueta-runner-azul.png" alt="" width="100%" class="silueta-runner-azul">
+        <h3>
+            rutas con historia
+        </h3>
+        <p>
+            <b>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmo.</b> Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        </p>
+
+        <div class="nav-buttons">
+            <button class="nav-btn active" onclick="loadRoute(0)">NEW BALANCE</button>
+            <button class="nav-btn" onclick="loadRoute(1)">LIMA 42K</button>
+            <button class="nav-btn" onclick="loadRoute(2)">LIMA 21K</button>
+            <button class="nav-btn" onclick="loadRoute(3)">CALLAO</button>
+        </div>
+        
+        <div id="dynamic-area">
+            <div class="route-header">
+                <h2 class="route-title" id="r-title">NEW BALANCE 15K</h2>
+                <p class="route-desc" id="r-desc">Empieza y termina en Parque Andrés Avellino Cáceres (San Isidro)</p>
+            </div>
+
+            <div class="map-container">
+                <img src="./img/ruta-historia-1.jpg" alt="Mapa Ruta" class="map-img" id="r-map">
+            </div>
+
+            <div class="stats-container">
+                
+                <div class="stat-row">
+                    <div class="stat-header">
+                        <span class="stat-label">DISTANCIA</span>
+                        <span class="stat-value" id="val-dist">15 km</span>
+                    </div>
+                    <div class="progress-bg">
+                        <div class="progress-fill" id="bar-dist" style="width: 35%;"></div>
+                    </div>
+                </div>
+
+                <div class="stat-row">
+                    <div class="stat-header">
+                        <span class="stat-label">CALORÍAS</span>
+                        <span class="stat-value" id="val-cal">1400 kcal</span>
+                    </div>
+                    <div class="progress-bg">
+                        <div class="progress-fill" id="bar-cal" style="width: 30%;"></div>
+                    </div>
+                </div>
+
+                <div class="stat-row">
+                    <div class="stat-header">
+                        <span class="stat-label">SEGURIDAD</span>
+                        <span class="stars" id="val-sec">★★★★★</span>
+                    </div>
+                    <div class="divider-stats"></div>
+                </div>
+
+                <div class="stat-row">
+                    <div class="stat-header">
+                        <span class="stat-label">ACCESIBILIDAD</span>
+                        <span class="stars" id="val-acc">★★★★★</span>
+                    </div>
+                    <div class="divider-stats"></div>
+                </div>
+
+            </div>
+        </div>  
+        <img src="./img/bottom-rutas-historia.jpg" alt="" width="100%">
+    </div>
+
+    <div class="main-anatomia">
+        <img class="titulo-anatomia" src="./img/titulo-anatomia.webp" alt="" width="100%">
+
+        <h3>
+            ¿Qué dice tu cuerpo?
+        </h3>
+        <h4>
+            Hablan los especialistas
+        </h4>
+
+        <div class="box-video-especialista">
+            <p>
+                ¿Cuáles son las lesiones más comunes entre corredores en el running?
+            </p>
+            <div class="box-iframe">
+                <script src="https://cdn.jwplayer.com/players/zust754t-sfGpVx0W.js"></script>
+            </div>            
+        </div>
+
+        <div class="box-video-especialista">
+            <p>
+                ¿Es peligroso correr todos los días?
+            </p>
+            <div class="box-iframe">
+                <script src="https://cdn.jwplayer.com/players/KkyNmV9d-sfGpVx0W.js"></script>
+            </div>            
+        </div>
+
+        <div class="box-video-especialista">
+            <p>
+                ¿Cuál es la ventana de recuperación y cómo aprovecharla?
+            </p>
+            <div class="box-iframe">
+                <script src="https://cdn.jwplayer.com/players/nCcI4HQ9-sfGpVx0W.js"></script>
+            </div>            
+        </div>
+
+        <div class="box-video-especialista">
+            <p>
+                ¿Qué cambios ocurren en el corazón cuando persona empieza a correr?
+            </p>
+            <div class="box-iframe">
+                <script src="https://cdn.jwplayer.com/players/JXA50Yb4-sfGpVx0W.js"></script>
+            </div>            
+        </div>
+
+        <div class="box-video-especialista">
+            <p>
+                ¿Cuánto running es ideal para mantener un corazón saludable?
+            </p>
+            <div class="box-iframe">
+                <script src="https://cdn.jwplayer.com/players/WgtsQ6tm-sfGpVx0W.js"></script>
+            </div>            
+        </div>
+
+        <div class="box-video-especialista">
+            <p>
+                ¿Hay algún riesgo para el corazón después de años de sedentarismo?
+            </p>
+            <div class="box-iframe">
+                <script src="https://cdn.jwplayer.com/players/vIbq6DyU-sfGpVx0W.js"></script>
+            </div>            
+        </div>
+
+        <h3>
+            ¿Y sobre la nutrición?
+        </h3>
+
+        <div class="box-video-especialista">
+            <p>
+                ¿Qué tipo de alimentos se deben consumir en días previos a una carrera?
+            </p>
+            <div class="box-iframe">
+                <script src="https://cdn.jwplayer.com/players/w4nSNSH9-sfGpVx0W.js"></script>
+            </div>            
+        </div>
+
+        <div class="box-video-especialista">
+            <p>
+                ¿Cuántos horas y qué desayuno es ideal antes de una carrera?
+            </p>
+            <div class="box-iframe">
+                <script src="https://cdn.jwplayer.com/players/JNWO6XR8-sfGpVx0W.js"></script>
+            </div>            
+        </div>
+
+        <div class="box-video-especialista">
+            <p>
+                Durante una prueba, ¿es necesario tomar suplementos deportivos?
+            </p>
+            <div class="box-iframe">
+                <script src="https://cdn.jwplayer.com/players/uk78foVh-sfGpVx0W.js"></script>
+            </div>            
+        </div>
+
+        <div class="box-video-especialista">
+            <p>
+                Después de una prueba, ¿qué alimentos son importantes?
+            </p>
+            <div class="box-iframe">
+                <script src="https://cdn.jwplayer.com/players/xCbKELWx-sfGpVx0W.js"></script>
+            </div>            
+        </div>
+
+        <div class="box-video-especialista">
+            <p>
+                ¿Qué se debe evitar comer tras una prueba?
+            </p>
+            <div class="box-iframe">
+                <script src="https://cdn.jwplayer.com/players/xodi1pLD-sfGpVx0W.js"></script>
+            </div>            
+        </div>
+
+        <div class="box-video-especialista">
+            <p>
+                ¿Son realmente necesarios los suplementos deportivos?
+            </p>
+            <div class="box-iframe">
+                <script src="https://cdn.jwplayer.com/players/xU3jitJh-sfGpVx0W.js"></script>
+            </div>            
+        </div>
+
+    </div>
+
+    <div class="main-universo">
+        <div class="box-botonera-universo">
+            <img class="bg-universo" src="./img/universo.webp" alt="" width="100%">
+            <div class="bg-planetas">
+                <button class="universo-btn active" onclick="showCategory('historia', event)">HISTORIA DEL CALZADO</button>
+                <button class="universo-btn" onclick="showCategory('batidos', event)">BATIDOS</button>
+                <button class="universo-btn" onclick="showCategory('alimentacion', event)">ALIMENTACIÓN</button>
+                <button class="universo-btn" onclick="showCategory('gadgets', event)">GADGETS</button>
+            </div>
+
+            <div class="contenido-inferior">
+    
+                <div id="historia" class="info-box active-box">
+                    <img src="https://placehold.co/600x300?text=Historia+Calzado" alt="Historia">
+                </div>
+
+                <div id="batidos" class="info-box">
+                    <h2>🥤 Energía Líquida</h2>
+                    <p>Recetas de batidos para antes y después de correr...</p>
+                </div>
+
+                <div id="alimentacion" class="info-box">
+                    <h2>🥗 Nutrición Deportiva</h2>
+                    <p>Los mejores alimentos para mejorar tu rendimiento...</p>
+                </div>
+
+                <div id="gadgets" class="info-box">
+                    <h2>⌚ Tecnología Runner</h2>
+                    <p>Relojes, sensores y apps recomendadas...</p>
+                </div>
+
+            </div>
+
+        </div>        
+    </div>
+
+    <div class="main-apps">
+        <h3>
+            Apps de entrenamiento y análisis
+        </h3>
+
+        <div class="apps-container">            
+
+            <div class="app-card">
+                <div class="app-visual">
+                    <img src="./img/app-1.png" alt="Strava Logo" class="app-icon">
+                    <div class="app-name">STRAVA</div>
+                </div>
+                <div class="app-info">
+                    <div class="app-desc">
+                        <span class="label-bold">Funcionalidad:</span> Registro de actividades con GPS, análisis detallado de métricas como ritmo, frecuencia cardíaca, elevación y potencia.<br>
+                        <span class="label-bold">Ideal para:</span> Corredores que buscan una comunidad activa y análisis avanzados.
+                    </div>
+                    <div class="ratings-row">
+                        <div class="rating-block">
+                            <span class="store-title">APP STORE: 4.8</span>
+                            <span class="stars">★★★★★</span>
+                        </div>
+                        <div class="divider-vertical"></div>
+                        <div class="rating-block">
+                            <span class="store-title">GOOGLE PLAY: 4.5</span>
+                            <span class="stars">★★★★½</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="app-card">
+                <div class="app-visual">
+                    <img src="./img/app-2.png" alt="Nike Logo" class="app-icon">
+                    <div class="app-name">NIKE RUN<br>CLUB</div>
+                </div>
+                <div class="app-info">
+                    <div class="app-desc">
+                        <span class="label-bold">Funcionalidad:</span> Seguimiento de carreras, planes de entrenamiento personalizados, y carreras guiadas por audio.<br>
+                        <span class="label-bold">Ideal para:</span> Corredores de todos los niveles que buscan motivación y estructura.
+                    </div>
+                    <div class="ratings-row">
+                        <div class="rating-block">
+                            <span class="store-title">APP STORE: 4.8</span>
+                            <span class="stars">★★★★★</span>
+                        </div>
+                        <div class="divider-vertical"></div>
+                        <div class="rating-block">
+                            <span class="store-title">GOOGLE PLAY: 4.3</span>
+                            <span class="stars">★★★★☆</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="app-card">
+                <div class="app-visual">
+                    <img src="./img/app-3.png" alt="Adidas Logo" class="app-icon">
+                    <div class="app-name">ADIDAS<br>RUNNING</div>
+                </div>
+                <div class="app-info">
+                    <div class="app-desc">
+                        <span class="label-bold">Funcionalidad:</span> Registro de actividades, planes de entrenamiento, y análisis de rendimiento.<br>
+                        <span class="label-bold">Ideal para:</span> Corredores que buscan una aplicación versátil con respaldo de una marca deportiva reconocida.
+                    </div>
+                    <div class="ratings-row">
+                        <div class="rating-block">
+                            <span class="store-title">APP STORE: 4.9</span>
+                            <span class="stars">★★★★★</span>
+                        </div>
+                        <div class="divider-vertical"></div>
+                        <div class="rating-block">
+                            <span class="store-title">GOOGLE PLAY: 4.8</span>
+                            <span class="stars">★★★★★</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3>
+                Apps con enfoque en análisis avanzado y planificación
+            </h3>
+
+            <div class="app-card">
+                <div class="app-visual">
+                    <img src="./img/app-4.png" alt="Runna Logo" class="app-icon">
+                    <div class="app-name">RUNNA</div>
+                </div>
+                <div class="app-info">
+                    <div class="app-desc">
+                        <span class="label-bold">Funcionalidad:</span> Planes de entrenamiento personalizados adaptados a tus objetivos y nivel de experiencia.<br>
+                        <span class="label-bold">Ideal para:</span> Corredores que buscan una guía estructurada hacia objetivos específicos.
+                    </div>
+                    <div class="ratings-row">
+                        <div class="rating-block">
+                            <span class="store-title">APP STORE: 4.8</span>
+                            <span class="stars">★★★★★</span> </div>
+                        <div class="divider-vertical"></div>
+                        <div class="rating-block">
+                            <span class="store-title">GOOGLE PLAY: 5</span>
+                            <span class="stars">★★★★★</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="app-card">
+                <div class="app-visual">
+                    <img src="./img/app-5.png" alt="Runna Logo" class="app-icon">
+                    <div class="app-name">ONE<br>RUNNING</div>
+                </div>
+                <div class="app-info">
+                    <div class="app-desc">
+                        <span class="label-bold">Funcionalidad:</span> Entrenamientos personalizados utilizando inteligencia artificial que se adaptan a tu nivel, objetivos y sensaciones.<br>
+                        <span class="label-bold">Ideal para:</span> Corredores que desean una experiencia de entrenamiento similar a la de un coach personal.
+                    </div>
+                    <div class="ratings-row">
+                        <div class="rating-block">
+                            <span class="store-title">APP STORE: 3.8</span>
+                            <span class="stars">★★★★☆</span>
+                        </div>
+                        <div class="divider-vertical"></div>
+                        <div class="rating-block">
+                            <span class="store-title">GOOGLE PLAY: 4.5</span>
+                            <span class="stars">★★★★½</span> </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <img src="./img/bg-bottom-apps.jpg" alt="" width="100%">
+    </div>
+
+    <div class="main-libros">
+        <h3>
+            libros escenciales
+        </h3>
+
+        <div class="books-container">
+
+            <div class="book-card">
+                <img src="./img/libro-1.jpg" alt="Nacidos para Correr" class="book-cover">
+                <div class="book-title">Nacidos<br>para Correr</div>
+                <div class="book-author">Christopher<br>McDougall</div>
+                <div class="book-desc">
+                    Un clásico moderno que explora la cultura Tarahumara y el running natural.
+                </div>
+            </div>
+
+            <div class="book-card">
+                <img src="./img/libro-2.jpg" alt="Correr o morir" class="book-cover">
+                <div class="book-title">Correr<br>o morir</div>
+                <div class="book-author">Kilian<br>Jornet</div>
+                <div class="book-desc">
+                    Autobiografía del ultramaratonista más famoso, que combina poesía, sufrimiento y superación.
+                </div>
+            </div>
+
+            <div class="book-card">
+                <img src="./img/libro-3.jpg" alt="Correr" class="book-cover">
+                <div class="book-title">Correr</div>
+                <div class="book-author">Jean<br>Echenoz</div>
+                <div class="book-desc">
+                    Novela biográfica sobre Emil Zátopek, leyenda del atletismo checo.
+                </div>
+            </div>
+
+            <div class="book-card">
+                <img src="./img/libro-4.jpg" alt="La fórmula de Daniels" class="book-cover">
+                <div class="book-title">La fórmula<br>de Daniels<br>para<br>corredores</div>
+                <div class="book-author">Scott<br>Douglas</div>
+                <div class="book-desc">
+                    Biblia para el entrenamiento estructurado. Utilizado por entrenadores de todo el mundo.
+                </div>
+            </div>
+
+        </div>
+
+        <h3>
+            podcast
+        </h3>
+
+        <div class="podcast-section">
+
+            <div class="podcast-card">
+                <div class="podcast-img-container">
+                    <img src="./img/podcast-1.png" alt="Mejor Correr" class="podcast-img">
+                </div>
+                <h2 class="podcast-title">MEJOR CORRER</h2>
+                <p class="podcast-desc">
+                    Entrevistas con atletas de alto rendimiento y aficionados, abordando temas de entrenamiento, mentalidad y experiencias personales.
+                </p>
+                <div class="social-buttons">
+                    <a href="https://www.youtube.com/c/MejorCorrer" class="icon-btn btn-youtube" aria-label="YouTube" target="_blank">
+                        <svg class="icon-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M8 5V19L19 12L8 5Z" fill="#1a008e"/> </svg>
+                    </a>
+                    <a href="https://open.spotify.com/show/0DM4UHWQHswhKPClCBkL6h" class="icon-btn btn-spotify" aria-label="Spotify" target="_blank">
+                        <svg class="icon-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM16.5 17.5C16.3 17.8 15.9 17.9 15.6 17.7C13.2 16.2 10 15.9 6.3 16.7C5.9 16.8 5.6 16.6 5.5 16.2C5.4 15.8 5.6 15.5 6 15.4C10.1 14.5 13.7 14.9 16.4 16.6C16.7 16.8 16.8 17.2 16.5 17.5ZM17.8 14.4C17.5 14.8 17 14.9 16.6 14.6C13.8 12.9 9.5 12.4 6.2 13.4C5.8 13.5 5.3 13.3 5.2 12.9C5.1 12.5 5.3 12 5.7 11.9C9.5 10.7 14.3 11.3 17.6 13.3C18 13.5 18.1 14 17.8 14.4ZM17.9 11.2C14.6 9.2 8.9 9 5.7 10C5.2 10.1 4.7 9.8 4.6 9.3C4.5 8.8 4.8 8.3 5.3 8.2C9 7.1 15.3 7.3 19.1 9.6C19.6 9.9 19.7 10.5 19.4 11C19.1 11.4 18.4 11.5 17.9 11.2Z" fill="#1a008e"/> </svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="podcast-card">
+                <div class="podcast-img-container">
+                    <img src="./img/podcast-2.png" alt="Diario Runner" class="podcast-img">
+                </div>
+                <h2 class="podcast-title">DIARIO RUNNER</h2>
+                <p class="podcast-desc">
+                    Consejos sobre entrenamiento, material deportivo, nutrición y actualidad del mundo runner.
+                </p>
+                <div class="social-buttons">
+                    <a href="https://www.youtube.com/c/diariorunnerpodcast" class="icon-btn btn-youtube" aria-label="YouTube" target="_blank">
+                        <svg class="icon-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M8 5V19L19 12L8 5Z" fill="#1a008e"/>
+                        </svg>
+                    </a>
+                    <a href="https://open.spotify.com/show/4kLzECA2X6UcuuAhH1Eqhn" class="icon-btn btn-spotify" aria-label="Spotify" target="_blank">
+                        <svg class="icon-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM16.5 17.5C16.3 17.8 15.9 17.9 15.6 17.7C13.2 16.2 10 15.9 6.3 16.7C5.9 16.8 5.6 16.6 5.5 16.2C5.4 15.8 5.6 15.5 6 15.4C10.1 14.5 13.7 14.9 16.4 16.6C16.7 16.8 16.8 17.2 16.5 17.5ZM17.8 14.4C17.5 14.8 17 14.9 16.6 14.6C13.8 12.9 9.5 12.4 6.2 13.4C5.8 13.5 5.3 13.3 5.2 12.9C5.1 12.5 5.3 12 5.7 11.9C9.5 10.7 14.3 11.3 17.6 13.3C18 13.5 18.1 14 17.8 14.4ZM17.9 11.2C14.6 9.2 8.9 9 5.7 10C5.2 10.1 4.7 9.8 4.6 9.3C4.5 8.8 4.8 8.3 5.3 8.2C9 7.1 15.3 7.3 19.1 9.6C19.6 9.9 19.7 10.5 19.4 11C19.1 11.4 18.4 11.5 17.9 11.2Z" fill="#1a008e"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="main-influencers">
+        <h3>
+            influencers de running más destacados
+        </h3>
+
+        <div class="profiles-container">
+
+            <div class="profile-card">
+                <img src="./img/influencer-1.png" alt="Nick Bare" class="profile-img">
+                
+                <h2 class="profile-name">Nick Bare (@nickbarefitness)</h2>
+                
+                <ul class="profile-details">
+                    <li class="profile-item">• Fundador de Bare Performance Nutrition y exmilitar.</li>
+                    <li class="profile-item">• Combina entrenamiento físico, mentalidad y emprendimiento.</li>
+                    <li class="profile-item">• Más de 1.3 millones de seguidores en Instagram.</li>
+                </ul>
+            </div>
+
+            <div class="profile-card">
+                <img src="./img/influencer-2.png" alt="Gabby Thomas" class="profile-img">
+                
+                <h2 class="profile-name">Gabby Thomas (@gabbythomas)</h2>
+                
+                <ul class="profile-details">
+                    <li class="profile-item">• Medallista olímpica y velocista de élite.</li>
+                    <li class="profile-item">• Inspiración para atletas jóvenes y defensora de la salud mental.</li>
+                    <li class="profile-item">• Aproximadamente 1.2 millones de seguidores en Instagram.</li>
+                </ul>
+            </div>
+
+            <div class="profile-card">
+                <img src="./img/influencer-3.png" alt="Courtney Dauwalter" class="profile-img">
+                
+                <h2 class="profile-name">Courtney Dauwalter (@courtneydauwalter)</h2>
+                
+                <ul class="profile-details">
+                    <li class="profile-item">• Reconocida por su resistencia en ultramaratones y su estilo auténtico.</li>
+                    <li class="profile-item">• Más de 659,000 seguidores en Instagram.</li>
+                </ul>
+            </div>
+
+            <div class="profile-card">
+                <img src="./img/influencer-4.png" alt="Emma Coburn" class="profile-img">
+                
+                <h2 class="profile-name">Emma Coburn (@emmacoburn)</h2>
+                
+                <ul class="profile-details">
+                    <li class="profile-item">• Especialista en obstáculos y medallista olímpica.</li>
+                    <li class="profile-item">• Figura clave en el atletismo estadounidense.</li>
+                    <li class="profile-item">• Más de 521,000 seguidores en Instagram.</li>
+                </ul>
+            </div>
+
+            <div class="profile-card">
+                <img src="./img/influencer-5.png" alt="Desiree Linden" class="profile-img">
+                
+                <h2 class="profile-name">Desiree Linden (@des_linden)</h2>
+                
+                <ul class="profile-details">
+                    <li class="profile-item">• Fundador de Bare Performance Nutrition y exmilitar.</li>
+                    <li class="profile-item">• Creadora del pódcast “Nobody Asked Us” junto a Kara Goucher. </li>
+                    <li class="profile-item">• Anunció su retiro del atletismo profesional tras el Maratón de Boston 2025.</li>
+                </ul>
+            </div>
+
+            <h3 style="padding: 30px 0 0;">
+                ¿Y del Perú?
+            </h3>
+
+            <div class="profile-card">
+                <img src="./img/influencer-6.png" alt="Peláez" class="profile-img">
+                
+                <h2 class="profile-name">Peláez (@yosoypelaez)</h2>
+                
+                <ul class="profile-details">
+                    <li class="profile-item">• Con 252,000 seguidores en Instagram y 35,200 en YouTube, es uno de los creadores de contenido de running más populares en Perú.</li>
+                    <li class="profile-item">• Comparte entrenamientos, tips y experiencias personales, conectando con una amplia comunidad de corredores.</li>
+                </ul>
+                 
+            </div>
+
+            <div class="profile-card">
+                <img src="./img/influencer-7.png" alt="Karina Loayza Schwarz" class="profile-img">
+                
+                <h2 class="profile-name">Karina Loayza Schwarz (@karinaloa)</h2>
+                
+                <ul class="profile-details">
+                    <li class="profile-item">• Con 64,200 seguidores en Instagram y una tasa de interacción del 2.71%, comparte su pasión por el running y el estilo de vida saludable.</li>
+                    <li class="profile-item">• Ofrece contenido motivacional y consejos para corredores.</li>
+                </ul>
+                 
+            </div>
+
+            <div class="profile-card">
+                <img src="./img/influencer-8.png" alt="Micaela Rivera & Adam Wood" class="profile-img">
+                
+                <h2 class="profile-name">Micaela Rivera & Adam Wood (@micawood_ y @thewoodsrun)</h2>
+                
+                <ul class="profile-details">
+                    <li class="profile-item">• Micaela, atleta peruana, y su esposo Adam comparten su vida dedicada al running.</li>
+                    <li class="profile-item">• Tienen una comunidad de 113,000 seguidores en Instagram, donde documentan sus entrenamientos y competencias.</li>
+                </ul>                 
+            </div>
+
+        </div>
+
+        <img src="./img/bg-bottom-influencers.jpg" alt="" width="100%">
+    </div>
+
+    <div class="main-calendario">
+        <h3>
+            calendario running
+        </h3>
+        <h4>
+            Te presentamos las principales carreras del 2026
+        </h4>
+
+        <div class="calendar-container">
+
+            <div class="event-item">
+                <div class="event-date">24 DE ENERO > 8:00 AM</div>
+                <div class="event-location">
+                    <svg class="icon-pin" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                    LIMA
+                </div>
+                <h3 class="event-title">Santa María 7.5K Run by Tottus</h3>
+                <p class="event-desc">
+                    El 24 de enero de 2026 se realizará la tercera edición de la carrera Santa María 7.5K Run by Tottus organizada por Sports Perú Entertainment con el apoyo de la Municipalidad de Santa María del Mar. Distancias: 3 y 7.5 km.
+                </p>
+            </div>
+
+            <div class="event-item">
+                <div class="event-date">25 DE ENERO > 7:00 AM</div>
+                <div class="event-location">
+                    <svg class="icon-pin" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                    SAN ISIDRO, LIMA
+                </div>
+                <h3 class="event-title">Mercedes-Benz Corporate Games</h3>
+                <p class="event-desc">
+                    El 25 de enero de 2026 se realizará la primera edición del Mercedes-Benz Corporate Games Lima, la 1ra Carrera InterEmpresarial del Perú, organizada por MOCR Perú. Distancia: 5 km.
+                </p>
+            </div>
+
+            <div class="event-item">
+                <div class="event-date">27 DE MARZO > 10:00 PM</div>
+                <div class="event-location">
+                    <svg class="icon-pin" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                    LIMA
+                </div>
+                <h3 class="event-title">Lima Ultramaratón</h3>
+                <p class="event-desc">
+                    El 27 de marzo de 2026 se realizará la Lima Ultramaratón organizada por AGD Outdoors. La única carrera a pie en distancia ultra sobre pista o asfalto que se desarrolla en Perú. Distancias: 50, 80 y 100 km.
+                </p>
+            </div>
+
+            <div class="event-item">
+                <div class="event-date">26 DE ABRIL</div>
+                <div class="event-location">
+                    <svg class="icon-pin" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                    SAN ISIDRO, LIMA
+                </div>
+                <h3 class="event-title">XMART HEALTHY LIVING IRONMAN 70.3</h3>
+                <p class="event-desc">
+                    El 26 de abril de 2026 se realizará la séptima edición del IRONMAN 70.3 Perú en la ciudad de Lima. Nado 1.9K en Agua Dulce, Ciclismo 90K y Trote 21K en Costa Verde.
+                </p>
+            </div>
+
+            <div class="event-item">
+                <div class="event-date">10 DE MAYO > 6:00 AM</div>
+                <div class="event-location">
+                    <svg class="icon-pin" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                    LIMA
+                </div>
+                <h3 class="event-title">Wings for Life World Run</h3>
+                <p class="event-desc">
+                    El 10 de mayo de 2026 se realizará la carrera Wings for Life World Run - Lima. El 100% de las donaciones se destinan a la investigación de lesiones de médula espinal.
+                </p>
+            </div>
+
+            <div class="event-item">
+                <div class="event-date">24 DE MAYO > 6:00 AM</div>
+                <div class="event-location">
+                    <svg class="icon-pin" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                    LIMA
+                </div>
+                <h3 class="event-title">Maratón adidas Rímac Lima 42K</h3>
+                <p class="event-desc">
+                    El 24 de mayo de 2026 se realizará la Maratón adidas Rímac Lima 42K organizada por adidas Perú. Distancias: 21K (media maratón) y 42K (maratón).
+                </p>
+            </div>
+
+            <div class="event-item">
+                <div class="event-date">30 DE NOVIEMBRE > 7:00 AM</div>
+                <div class="event-location">
+                    <svg class="icon-pin" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                    INDEPENDENCIA, LIMA
+                </div>
+                <h3 class="event-title">Carrera Lima Norte Corre</h3>
+                <p class="event-desc">
+                    El 30 de noviembre de 2025 se realizará la décima primera edición de la Carrera Lima Norte Corre. Distancias 12K y Mini Maratón.
+                </p>
+            </div>
+
+            <div class="event-item">
+                <div class="event-date">30 DE NOVIEMBRE > 7:30 AM</div>
+                <div class="event-location">
+                    <svg class="icon-pin" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                    LINCE, LIMA
+                </div>
+                <h3 class="event-title">Carrera Glow Inspiration Race</h3>
+                <p class="event-desc">
+                    El 30 de noviembre de 2025 se realizará la Carrera Glow Inspiration Race powered by Olympikus. Distancias 6 y 12 kilómetros.
+                </p>
+            </div>
+
+            <div class="event-item">
+                <div class="event-date">21 DE DICIEMBRE > 7:00 AM</div>
+                <div class="event-location">
+                    <svg class="icon-pin" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                    MIRAFLORES, LIMA
+                </div>
+                <h3 class="event-title">AVA Vuelta 8K & 4K a Miraflores</h3>
+                <p class="event-desc">
+                    El 21 de diciembre de 2025 se realizará la carrera AVA La Vuelta 8K & 4K a Miraflores organizada por Perú Runners, celebrando su 27 edición.
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+    
+    
+    <!-- quiz -->
+    <script>
+        // Variables para guardar el puntaje
+        let scores = {
+            q1: 0,
+            q2: 0,
+            q3: 0
+        };
+
+        // Función principal que maneja la selección y transición
+        function selectOption(questionNum, points, event) {
+            // 1. Guardar puntaje
+            scores['q' + questionNum] = points;
+
+            // 2. Feedback Visual Inmediato
+            // Obtener la tarjeta actual
+            const currentCard = document.getElementById('q' + questionNum);
+            // Limpiar selecciones previas en esta tarjeta
+            currentCard.querySelectorAll('.option').forEach(opt => opt.classList.remove('selected'));
+            // Marcar la opción clickeada (usamos event.currentTarget)
+            event.currentTarget.classList.add('selected');
+
+            // 3. Transición automática con un pequeño retraso
+            // Usamos setTimeout para dar 500ms (medio segundo) al usuario para ver qué seleccionó antes de cambiar.
+            setTimeout(() => {
+                if (questionNum < 3) {
+                    // Si no es la última pregunta, pasa a la siguiente
+                    document.getElementById('q' + questionNum).classList.remove('active');
+                    document.getElementById('q' + (questionNum + 1)).classList.add('active');
+                } else {
+                    // Si es la última pregunta (la 3), muestra el resultado
+                    showResult();
+                }
+            }, 500); 
+        }
+
+        function showResult() {
+            // Calcular total
+            const totalScore = scores.q1 + scores.q2 + scores.q3;
+
+            // Ocultar contenedor del cuestionario y título principal
+            document.getElementById('quiz-area').style.display = 'none';
+            document.getElementById('main-title').style.display = 'none';
+
+            // Lógica de Resultados (Misma lógica anterior)
+            // Rango posible: 3 a 9
+            if (totalScore <= 4) {
+                document.getElementById('res-salud').style.display = 'block';
+            } else if (totalScore >= 5 && totalScore <= 7) {
+                document.getElementById('res-master').style.display = 'block';
+            } else {
+                document.getElementById('res-elite').style.display = 'block';
+            }
+        }
+    </script>
+
+    <!-- slide videos corredores -->
+    <script>
+        const runnersData = [
+            {
+                // Corredor 1 
+                name: "Christina Ortiz",
+                age: "43 años",
+                videoUrl: "https://cdn.jwplayer.com/players/ySqnF956-sfGpVx0W.html",                 
+                statsImage: "./img/ruta-1.webp" 
+            },
+            {
+                // Corredor 2
+                name: "Dayani Chávez",
+                age: "43 años",
+                videoUrl: "https://cdn.jwplayer.com/players/tpa420Zk-sfGpVx0W.html",
+                statsImage: "./img/ruta-1.webp"
+            },
+            {
+                // Corredor 3
+                name: "Francesca Orrego",
+                age: "30 años",
+                videoUrl: "https://cdn.jwplayer.com/players/BuQCda2i-sfGpVx0W.html",
+                statsImage: "./img/ruta-1.webp"
+            },
+            {
+                // Corredor 4
+                name: "José Fernandez",
+                age: "68 años",
+                videoUrl: "https://cdn.jwplayer.com/players/AUDrAGCo-sfGpVx0W.html", 
+                statsImage: "./img/ruta-1.webp"
+            },
+            {
+                // Corredor 5
+                name: "Mauricio Rebaza",
+                age: "36 años",
+                videoUrl: "https://cdn.jwplayer.com/players/yvd4Pyp8-sfGpVx0W.html", 
+                statsImage: "./img/ruta-1.webp"
+            }
+        ];
+
+        // --- Elementos del DOM que vamos a actualizar ---
+        const nameEl = document.getElementById('runner-name');
+        const ageEl = document.getElementById('runner-age');
+        const videoFrameEl = document.getElementById('video-frame');
+        const statsImageEl = document.getElementById('stats-image');
+        const contentContainer = document.getElementById('dynamic-content');
+        const navThumbs = document.querySelectorAll('.profile-thumb');
+
+        // --- Función principal para cargar un corredor ---
+        function loadRunner(index) {
+            // 1. Obtener datos del array
+            const data = runnersData[index];
+
+            // 2. Reiniciar animación
+            contentContainer.classList.remove('fade-in');
+            void contentContainer.offsetWidth; // Truco para reiniciar animación CSS
+            contentContainer.classList.add('fade-in');
+
+            // 3. Actualizar textos
+            nameEl.textContent = data.name;
+            ageEl.textContent = data.age;
+            
+            // 4. Actualizar Video e Imagen
+            videoFrameEl.src = data.videoUrl;
+            statsImageEl.src = data.statsImage;
+
+            // 5. Actualizar visualmente la navegación (la línea blanca)
+            // Quitamos 'active' de todas
+            navThumbs.forEach(thumb => thumb.classList.remove('active'));
+            // Agregamos 'active' a la que se hizo click
+            navThumbs[index].classList.add('active');
+        }
+
+        // INICIALIZACIÓN: Cargar el primer corredor (índice 0) al abrir la página
+        loadRunner(0);
+
+        // --- FIX: PAUSAR VIDEO AL HACER SCROLL (SALIR DE PANTALLA) ---
+    
+        const observerOptions = {
+            root: null,
+            threshold: 0.1 // Se activa cuando queda menos del 10% del video visible
+        };
+
+        const videoObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                // Si el video YA NO se ve en pantalla...
+                if (!entry.isIntersecting) {
+                    const iframe = document.getElementById('video-frame');
+                    
+                    // Verificamos que el iframe tenga una URL cargada
+                    if (iframe && iframe.src && iframe.src !== "") {
+                        console.log("Video fuera de vista: Forzando detención.");
+                        
+                        // TRUCO: Reasignar el src a sí mismo fuerza al navegador
+                        // a recargar el iframe, lo que detiene la reproducción inmediatamente.
+                        const currentUrl = iframe.src;
+                        iframe.src = currentUrl; 
+                    }
+                }
+            });
+        }, observerOptions);
+
+        // Iniciamos la vigilancia sobre el contenedor del video
+        const videoContainerEl = document.querySelector('.video-container');
+        if (videoContainerEl) {
+            videoObserver.observe(videoContainerEl);
+        }
+
+    </script>
+
+    <!-- rutas con historia -->
+    <script>
+        const routesData = [
+            {
+                // Botón 0: NEW BALANCE
+                title: "NEW BALANCE 15K",
+                desc: "Empieza y termina en Parque Andrés Avellino Cáceres (San Isidro)",
+                mapUrl: "./img/ruta-historia-1.jpg",
+                distance: "15 km",
+                distPercent: "35%", // Porcentaje visual de la barra (ej: 15 de 42km)
+                calories: "1400 kcal",
+                calPercent: "30%",  // Porcentaje visual
+                security: 5,        // Número de estrellas (1-5)
+                accessibility: 5    // Número de estrellas (1-5)
+            },
+            {
+                // Botón 1: LIMA 42K
+                title: "MARATÓN LIMA 42K",
+                desc: "Empieza y termina en el Parque Kennedy (Miraflores)",
+                mapUrl: "./img/ruta-historia-2.jpg",
+                distance: "42 km",
+                distPercent: "50%",
+                calories: "3500 kcal",
+                calPercent: "50%",
+                security: 5,
+                accessibility: 5
+            },
+            {
+                // Botón 2: LIMA 21K
+                title: "MEDIA MARATÓN 21K",
+                desc: "Empieza en Plaza de Armas (Lima) y termina en Parque de La Reserva (Lima)",
+                mapUrl: "./img/ruta-historia-3.jpg",
+                distance: "21 km",
+                distPercent: "30%",
+                calories: "2000 kcal",
+                calPercent: "30%",
+                security: 3,
+                accessibility: 4
+            },
+            {
+                // Botón 3: CALLAO
+                title: "RUTA CALLAO 10K",
+                desc: "Empieza y termina en Escuela Naval del Perú",
+                mapUrl: "./img/ruta-historia-4.jpg",
+                distance: "21 km",
+                distPercent: "25%",
+                calories: "2000 kcal",
+                calPercent: "20%",
+                security: 3,
+                accessibility: 3
+            }
+        ];
+
+        // Función auxiliar para generar estrellas
+        function getStars(count) {
+            let starsHTML = "";
+            for (let i = 0; i < 5; i++) {
+                if (i < count) {
+                    starsHTML += "★"; // Estrella llena
+                } else {
+                    starsHTML += "☆"; // Estrella vacía (opcional, aquí no la uso para igualar tu diseño)
+                }
+            }
+            // Tu diseño solo muestra estrellas llenas según el rating, así que cortamos el string:
+            return "★".repeat(count);
+        }
+
+        function loadRoute(index) {
+            const data = routesData[index];
+
+            // 1. Actualizar textos e imagen
+            document.getElementById('r-title').textContent = data.title;
+            document.getElementById('r-desc').textContent = data.desc;
+            document.getElementById('r-map').src = data.mapUrl;
+
+            // 2. Actualizar Stats (Texto)
+            document.getElementById('val-dist').textContent = data.distance;
+            document.getElementById('val-cal').textContent = data.calories;
+
+            // 3. Actualizar Barras (Ancho CSS)
+            document.getElementById('bar-dist').style.width = data.distPercent;
+            document.getElementById('bar-cal').style.width = data.calPercent;
+
+            // 4. Actualizar Estrellas
+            document.getElementById('val-sec').textContent = getStars(data.security);
+            document.getElementById('val-acc').textContent = getStars(data.accessibility);
+
+            // 5. Manejo de botones activos
+            const buttons = document.querySelectorAll('.nav-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            buttons[index].classList.add('active');
+
+            // 6. Pequeña animación de refresco
+            const area = document.getElementById('dynamic-area');
+            area.classList.remove('fade-content');
+            void area.offsetWidth; // Truco para reiniciar animación
+            area.classList.add('fade-content');
+        }
+
+    </script>
+
+    <!-- pausar videos especialistas-->
+    <script>
+        window.addEventListener('load', function() {
+            
+            // Verificamos que la librería de JWPlayer haya cargado
+            if (typeof jwplayer === 'function') {
+                
+                // Configuración del Observador (Scroll)
+                // threshold: 0.2 significa que pausará si se ve menos del 20% del video
+                const observerOptions = {
+                    root: null, 
+                    threshold: 0.2 
+                };
+
+                let i = 0;
+
+                // Recorremos todos los reproductores detectados (0, 1, 2...)
+                while (jwplayer(i)) {
+                    
+                    // "Capturamos" la instancia actual para usarla dentro de las funciones
+                    const playerInstance = jwplayer(i);
+                    const playerContainer = playerInstance.getContainer(); // El elemento HTML del video
+
+                    // --- 1. LÓGICA DE EXCLUSIVIDAD (Solo uno suena a la vez) ---
+                    playerInstance.on('play', function() {
+                        let j = 0;
+                        while (jwplayer(j)) {
+                            const otherPlayer = jwplayer(j);
+                            if (otherPlayer !== playerInstance) {
+                                otherPlayer.pause(true);
+                            }
+                            j++;
+                        }
+                    });
+
+                    // --- 2. LÓGICA DE SCROLL (Pausa al salir de pantalla) ---
+                    // Creamos un observador específico para este video
+                    const observer = new IntersectionObserver((entries) => {
+                        entries.forEach(entry => {
+                            // Si el video deja de ser visible (isIntersecting = false)
+                            // y el video está reproduciéndose (getState() === 'playing' o 'buffering')
+                            if (!entry.isIntersecting) {
+                                const state = playerInstance.getState();
+                                if (state === 'playing' || state === 'buffering') {
+                                    playerInstance.pause(true);
+                                }
+                            }
+                        });
+                    }, observerOptions);
+
+                    // Activamos el observador sobre el contenedor de este video
+                    if (playerContainer) {
+                        observer.observe(playerContainer);
+                    }
+
+                    i++; // Siguiente video
+                }
+            }
+        });
+    </script>
+
+    <!-- timelines universo -->
+    <script>
+        function showCategory(categoryId, event) {
+            // 1. MANEJO DE BOTONES
+            // Quitamos la clase 'active' de TODOS los botones
+            const allButtons = document.querySelectorAll('.universo-btn');
+            allButtons.forEach(btn => btn.classList.remove('active'));
+
+            // Agregamos la clase 'active' SOLO al botón que se presionó
+            // (event.currentTarget asegura que tomamos el botón, aunque clickees en el texto)
+            event.currentTarget.classList.add('active');
+
+            // 2. MANEJO DE CONTENIDO
+            // Ocultamos TODAS las cajas de contenido
+            const allBoxes = document.querySelectorAll('.info-box');
+            allBoxes.forEach(box => box.classList.remove('active-box'));
+
+            // Mostramos SOLO la caja que coincida con el ID enviado
+            const selectedBox = document.getElementById(categoryId);
+            if (selectedBox) {
+                selectedBox.classList.add('active-box');
+            }
+        }
+    </script>
+
+
+
+</body>
+</html>
