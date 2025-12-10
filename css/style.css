@@ -584,7 +584,14 @@ img.logos{
         .box-video-especialista .box-iframe{
             margin: 0 auto;
             max-width: 340px;
+            position: relative;
         }
+            .ctn-iframe{
+                
+            }
+                .ctn-iframe iframe{
+                    left: 0;
+                }
 .main-universo{
     background-color: #24028f;
     background-image: url('../img/bg-top-universo.webp');
@@ -1080,24 +1087,9 @@ img.logos{
             align-items: center;
             justify-content: center; /* Centramos el texto y el bullet */
             gap: 10px; /* Separación entre el cuadradito y el texto */
-        }
-        
+        }       
 
-        /* Responsive para móviles */
-        @media (max-width: 600px) {
-            .profile-name {
-                font-size: 1.5rem;
-            }
-            .profile-item {
-                font-size: 1rem;
-                text-align: center;
-                flex-direction: column; /* En móvil muy estrecho, apilar bullet */
-                gap: 5px;
-            }
-            .profile-item::before {
-                display: none; /* Opcional: En móviles a veces se ve mejor sin bullet si se centra */
-            }
-        }
+        
 .main-calendario{
     background-color: #25028e;
     margin-top: -4px;
@@ -1194,3 +1186,83 @@ img.logos{
             margin: 0;
             font-weight: 400;
         }
+
+/* Responsive para móviles */
+@media (max-width: 600px) {
+    .profile-name {
+        font-size: 1.5rem;
+    }
+    .profile-item {
+        font-size: 1rem;
+        text-align: center;
+        flex-direction: column; /* En móvil muy estrecho, apilar bullet */
+        gap: 5px;
+    }
+    .profile-item::before {
+        display: none; /* Opcional: En móviles a veces se ve mejor sin bullet si se centra */
+    }
+
+    img.logos{
+        padding-top: 50px;
+    }
+    .main-corredores h3{
+        font-size: 1.8rem;
+        line-height: 1.3;
+        padding: 0 10px;
+    }
+    .profile-thumb{
+        margin: 0 5px 20px;
+    }
+    .bg-planetas{
+        background: transparent;
+        margin-top: 0;
+        max-width: 90%;
+    }
+    .runner-info p{
+        font-size: 1.5rem;
+    }
+    .video-container{
+        width: 71%;
+    }
+    .main-rutas p{
+        font: 1.1rem / 1.4 'arial';
+        padding: 0 10px;
+    }
+    #dynamic-area{
+        padding: 0 10px;
+    }
+    .main-anatomia{
+        margin-top: -4px;
+        padding-top: 40px;
+    }
+        .main-anatomia h3{
+            font: 1.8rem / 1.1 'Druk Wide';
+        }
+    .main-universo{
+        padding-top: 15px;
+    }
+        .universo-btn{
+            font-size: 1.1rem;
+            min-width: 80%;
+        }
+            .universo-btn:nth-child(1),
+            .universo-btn:nth-child(2),
+            .universo-btn:nth-child(3),
+            .universo-btn:nth-child(4) {
+                left: 0;
+                position: relative;
+                top: 0;
+                margin: 10px auto 30px;
+                display: block;
+            }
+
+    .calendar-container{
+        box-sizing: border-box;
+        width: 90%;
+    }
+    .box-video-especialista{
+        max-width: 90%;
+        min-width: 90%;
+    }
+
+}
