@@ -1223,6 +1223,41 @@ img.logos{
         display: none;
     }
 
+
+.box-footer{
+    background: #25028f;
+    padding: 50px 0;
+}
+    .box-footer img{
+        display: block;
+        margin: 10px auto 30px;
+        max-width: 80px;
+    }
+    .box-footer ul{
+        padding: 0;
+        text-align: center;
+    }
+        .box-footer ul li{
+            margin: 0 auto 10px;
+        }
+            .box-footer ul li p{
+                color: #fff;
+                font: .9rem/1.2 arial;
+                margin: 0;
+            }
+                .box-footer ul li span{
+                    display: block;
+                    font-weight: bold;
+                    margin-bottom: 5px;
+                }
+
+
+#historia img{
+    display: block;
+    margin: 0 auto;
+    max-width: 500px;
+}
+
 /* Responsive para móviles */
 @media (max-width: 640px) {
 
@@ -1282,9 +1317,10 @@ img.logos{
             font: 1.8rem / 1.1 'Druk Wide';
         }
     .main-universo{
+        background-position: center -600px;
         padding-top: 15px;
     }
-        .universo-btn{
+        body .universo-btn{
             font-size: 1.1rem;
             min-width: 80%;
         }
@@ -1298,6 +1334,9 @@ img.logos{
                 margin: 10px auto 30px;
                 display: block;
             }
+    .contenido-inferior{
+        padding: 0;
+    }
 
     .calendar-container{
         box-sizing: border-box;
