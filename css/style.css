@@ -1252,7 +1252,10 @@ img.logos{
                 }
 
 
-#historia img{
+#historia img,
+#batidos img,
+#alimentacion img,
+#gadgets img{
     display: block;
     margin: 0 auto;
     max-width: 500px;
