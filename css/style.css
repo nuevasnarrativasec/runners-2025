@@ -402,7 +402,7 @@ img.logos{
             gap: 10px;
             overflow-x: auto; /* Permite scroll horizontal en móviles si no caben */
             padding-bottom: 30px;
-            max-width: 500px;
+            max-width: 600px;
             margin: 0 auto;
             justify-content: space-between;
         }
@@ -1302,8 +1302,8 @@ img.logos{
     .runner-info p{
         font-size: 1.5rem;
     }
-    .video-container{
-        width: 71%;
+    .main-corredores .video-container{
+        width: 80%;
     }
     .main-rutas p{
         font: 1.1rem / 1.4 'arial';
