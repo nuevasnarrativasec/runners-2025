@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Runners 2025</title>
 
-    <link rel="stylesheet" href="./css/style.css?v6">
+    <link rel="stylesheet" href="./css/style.css?v7">
 </head>
 <body>
 
@@ -152,7 +152,7 @@
             </div>
 
             <div>
-                <h4 class="ruta">Ruta habitual</h4>
+                <h4 class="ruta" id="ruta-title">Ruta habitual</h4>
                 <img id="stats-image" class="stats-image" src="" alt="Estadísticas y Ruta">
             </div>
         </div>
@@ -165,13 +165,13 @@
             rutas con historia
         </h3>
         <p>
-            <b>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmo.</b> Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            Repasa cuatro de las rutas más emblemáticas del running nacional en los últimos años.
         </p>
 
         <div class="nav-buttons">
             <button class="nav-btn active" onclick="loadRoute(0)">NEW BALANCE</button>
             <button class="nav-btn" onclick="loadRoute(1)">LIMA 42K</button>
-            <button class="nav-btn" onclick="loadRoute(2)">LIMA 21K</button>
+            <button class="nav-btn" onclick="loadRoute(2)">MEDIA MARATÓN DE LIMA</button>
             <button class="nav-btn" onclick="loadRoute(3)">CALLAO</button>
         </div>
         
@@ -526,7 +526,8 @@
 
             </div>
 
-        </div>        
+        </div>  
+        <img src="./img/bg-bottom-timeline.jpg" alt="" width="100%" style="display: block;">      
     </div>
 
     <div class="main-apps">
@@ -1087,28 +1088,28 @@
                 name: "Dayani Chávez",
                 age: "43 años",
                 videoUrl: "https://cdn.jwplayer.com/players/tpa420Zk-sfGpVx0W.html",
-                statsImage: "./img/ruta-1.webp"
+                statsImage: "./img/ruta-2.webp"
             },
             {
-                // Corredor 3
+                // Corredor 3 (SIN RUTA)
                 name: "Francesca Orrego",
                 age: "30 años",
                 videoUrl: "https://cdn.jwplayer.com/players/BuQCda2i-sfGpVx0W.html",
-                statsImage: "./img/ruta-1.webp"
+                statsImage: "" // Vacío
             },
             {
                 // Corredor 4
                 name: "José Fernandez",
                 age: "68 años",
                 videoUrl: "https://cdn.jwplayer.com/players/AUDrAGCo-sfGpVx0W.html", 
-                statsImage: "./img/ruta-1.webp"
+                statsImage: "./img/ruta-4.webp"
             },
             {
                 // Corredor 5
                 name: "Mauricio Rebaza",
                 age: "36 años",
                 videoUrl: "https://cdn.jwplayer.com/players/yvd4Pyp8-sfGpVx0W.html", 
-                statsImage: "./img/ruta-1.webp"
+                statsImage: "./img/ruta-5.webp"
             }
         ];
 
@@ -1117,6 +1118,9 @@
         const ageEl = document.getElementById('runner-age');
         const videoFrameEl = document.getElementById('video-frame');
         const statsImageEl = document.getElementById('stats-image');
+        // NUEVO: Seleccionamos el título de la ruta
+        const rutaTitleEl = document.getElementById('ruta-title'); 
+        
         const contentContainer = document.getElementById('dynamic-content');
         const navThumbs = document.querySelectorAll('.profile-thumb');
 
@@ -1134,39 +1138,43 @@
             nameEl.textContent = data.name;
             ageEl.textContent = data.age;
             
-            // 4. Actualizar Video e Imagen
+            // 4. Actualizar Video
             videoFrameEl.src = data.videoUrl;
-            statsImageEl.src = data.statsImage;
 
-            // 5. Actualizar visualmente la navegación (la línea blanca)
-            // Quitamos 'active' de todas
+            // 5. LÓGICA DE LA IMAGEN DE RUTA (FIX)
+            // Verificamos si hay imagen definida
+            if (data.statsImage && data.statsImage !== "") {
+                // SI HAY IMAGEN: Ponemos la ruta y mostramos los elementos
+                statsImageEl.src = data.statsImage;
+                statsImageEl.style.display = 'block'; // Mostrar imagen
+                rutaTitleEl.style.display = 'block';  // Mostrar título "Ruta habitual"
+            } else {
+                // NO HAY IMAGEN: Ocultamos ambos elementos
+                statsImageEl.style.display = 'none'; 
+                rutaTitleEl.style.display = 'none';
+            }
+
+            // 6. Actualizar visualmente la navegación (la línea blanca)
             navThumbs.forEach(thumb => thumb.classList.remove('active'));
-            // Agregamos 'active' a la que se hizo click
             navThumbs[index].classList.add('active');
         }
 
-        // INICIALIZACIÓN: Cargar el primer corredor (índice 0) al abrir la página
+        // INICIALIZACIÓN
         loadRunner(0);
 
         // --- FIX: PAUSAR VIDEO AL HACER SCROLL (SALIR DE PANTALLA) ---
-    
         const observerOptions = {
             root: null,
-            threshold: 0.1 // Se activa cuando queda menos del 10% del video visible
+            threshold: 0.1 
         };
 
         const videoObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                // Si el video YA NO se ve en pantalla...
                 if (!entry.isIntersecting) {
                     const iframe = document.getElementById('video-frame');
                     
-                    // Verificamos que el iframe tenga una URL cargada
                     if (iframe && iframe.src && iframe.src !== "") {
-                        console.log("Video fuera de vista: Forzando detención.");
-                        
-                        // TRUCO: Reasignar el src a sí mismo fuerza al navegador
-                        // a recargar el iframe, lo que detiene la reproducción inmediatamente.
+                        // Opción nuclear para detener reproducción
                         const currentUrl = iframe.src;
                         iframe.src = currentUrl; 
                     }
@@ -1174,7 +1182,6 @@
             });
         }, observerOptions);
 
-        // Iniciamos la vigilancia sobre el contenedor del video
         const videoContainerEl = document.querySelector('.video-container');
         if (videoContainerEl) {
             videoObserver.observe(videoContainerEl);
