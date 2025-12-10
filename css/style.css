@@ -61,17 +61,18 @@ img.logos{
 
 /* --- Estilos del Contenedor del Quiz --- */
     h1 {
-        font: 2rem/1.1 'Druk Wide';
-            color: #1a008e;
-            font-weight: 900;
-            font-style: italic;
-            text-transform: uppercase;
-            margin-bottom: 5px;
-            text-align: center;
+        font: 2rem / 1.1 'Druk Wide';
+        color: #1a008e;
+        font-weight: 900;
+        font-style: italic;
+        text-transform: uppercase;
+        text-align: center;
+        max-width: 500px;
+        margin: 20px auto;
         }
 
         .quiz-container {
-            margin: 10px auto;
+            margin: 35px auto;
             width: 320px;
             position: relative;
             perspective: 1000px;
@@ -91,12 +92,13 @@ img.logos{
         }
 
         .card h2 {
-            font: 1.3rem/1.2 '.';
+            font: 1.1rem / 1.2 '.';
             font-weight: 900;
             font-style: italic;
             text-transform: uppercase;
             margin-top: 0;
             color: #000;
+            text-align: center;
         }
 
         /* Opciones de respuesta */
@@ -110,7 +112,7 @@ img.logos{
         }
 
         .option {
-            font: 1rem/1.1 'Druk Wide';
+            font: 1rem/1.4 'Druk Wide';
             display: flex;
             align-items: center;
             cursor: pointer;
@@ -133,7 +135,6 @@ img.logos{
             background-color: #fff;
             border: 3px solid #000;
             border-radius: 50%;
-            margin-right: 0;
             display: inline-block;
             vertical-align: top;
         }
@@ -147,7 +148,7 @@ img.logos{
         }
 
         .option span{
-            max-width: 70%;
+            max-width: 85%;
             display: inline-block;
             vertical-align: top;           
         }
