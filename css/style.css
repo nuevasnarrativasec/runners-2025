@@ -66,7 +66,7 @@ img.logos{
             font-weight: 900;
             font-style: italic;
             text-transform: uppercase;
-            margin-bottom: 20px;
+            margin-bottom: 5px;
             text-align: center;
         }
 
@@ -1130,7 +1130,7 @@ img.logos{
         font: 1.8rem / 1.1 'Druk Wide';
         font-style: italic;
         margin: 0 auto;
-        max-width: 600px;
+        max-width: 400px;
         padding: 30px 0 0;
         text-align: center;
         text-transform: uppercase;
