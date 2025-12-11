@@ -1205,6 +1205,17 @@ img.logos{
             .fade-content{
                 margin-top: 10px;
             }
+            .main-anatomia .expert-info{
+                margin-left: 0;
+            }
+            .main-anatomia .expert-card{
+                width: 80%;
+            }
+            .expert-card,
+            .main-anatomia .expert-name,
+            .expert-role{
+                text-align: center;
+            }
 
         }
 
@@ -1485,7 +1496,7 @@ img.logos{
         }
             .box-footer ul li p{
                 color: #fff;
-                font: .9rem/1.2 arial;
+                font: .9rem/1.4 arial;
                 margin: 0;
             }
                 .box-footer ul li span{
@@ -1516,3 +1527,52 @@ img.logos{
         color: #000;
         margin: 5px auto;
     }
+
+/* --- TARJETA DE EXPERTO --- */
+        .expert-card {
+            max-width: 440px;
+            width: 100%;
+            margin: 30px auto 40px;
+        }
+
+        /* Contenedor de la Imagen (Círculo Blanco) */
+        .img-circle {
+            max-width: 100px;
+            overflow: hidden;
+            display: inline-block;
+            vertical-align: top;
+        }
+
+        .expert-photo {
+            width: 100%;
+            height: 100%;
+            filter: grayscale(100%) contrast(1.1); /* Convierte a Blanco y Negro automáticamente */
+        }
+
+        /* Textos */
+        .expert-info {
+            display: inline-block;
+            margin-left: 10px;
+            max-width: 70%;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        .expert-name {
+            color: #fff;
+            font: 1rem / 1.1 'Druk Wide';
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            text-align: left;
+            font-style: italic;
+        }
+
+        .expert-role {
+            color: #FF6C00;
+            font: .9rem / 1.3 'arial';
+            text-transform: uppercase;
+        }
+
+        
+
+       
