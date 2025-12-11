@@ -61,27 +61,33 @@ img.logos{
 
 /* --- Estilos del Contenedor del Quiz --- */
     h1 {
-        font: 2rem/1.1 'Druk Wide';
-            color: #1a008e;
-            font-weight: 900;
-            font-style: italic;
-            text-transform: uppercase;
-            margin-bottom: 20px;
-            text-align: center;
+        font: 2rem / 1.1 'Druk Wide';
+        color: #1a008e;
+        font-weight: 900;
+        font-style: italic;
+        text-transform: uppercase;
+        text-align: center;
+        max-width: 500px;
+        margin: 20px auto;
         }
 
+        /* --- ESTILOS NUEVOS DE LA TARJETA DE PREGUNTA --- */
         .quiz-container {
-            margin: 10px auto;
-            width: 320px;
+            width: 340px; /* Un poco más ancho para el nuevo diseño */
             position: relative;
-            perspective: 1000px;
+            margin: 30px auto;
         }
 
         .card {
-            background-color: #f08323; /* Naranja */
-            border-radius: 15px;
-            padding: 30px 20px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            /* Quitamos fondo y padding del contenedor principal */
+            background-color: transparent; 
+            padding: 0;
+            
+            border-radius: 15px; /* Esquinas muy redondeadas */
+            overflow: hidden; /* Asegura que el contenido respete las esquinas */
+           
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+            
             display: none; /* Oculto por defecto */
             animation: fadeIn 0.5s;
         }
@@ -90,64 +96,89 @@ img.logos{
             display: block;
         }
 
+        /* El Título ahora es el ENCABEZADO NEGRO */
         .card h2 {
-            font: 1.3rem/1.2 '.';
-            font-weight: 900;
+            background-color: #000;
+            color: #fff;
+            margin: 0;
+            padding: 30px 20px; /* Espaciado interno del encabezado */
+            text-align: center;
+            font-family: 'Druk Wide';
+            font-size: 1.1rem;
             font-style: italic;
             text-transform: uppercase;
-            margin-top: 0;
-            color: #000;
+            line-height: 1.2;
         }
 
-        /* Opciones de respuesta */
+        /* El contenedor de opciones ahora es el CUERPO NARANJA */
         .options-group {
+            background-color: #f08323; /* Naranja intenso */
             display: flex;
             flex-direction: column;
-            gap: 15px;
-            margin-top: 20px;
-            border-top: 2px solid #000;
-            padding-top: 20px;
+            padding: 0 20px; /* Padding solo a los lados */
+            margin-top: 0;
+            border-top: none;
         }
 
+        /* Estilo de cada fila de opción */
         .option {
-            font: 1rem/1.1 'Druk Wide';
             display: flex;
             align-items: center;
             cursor: pointer;
-            font-weight: 800;
+            
+            /* Tipografía estilo rudo */
+            color: #000;
             font-style: italic;
-            padding: 10px;
-            border-bottom: 2px solid #000;
-            transition: background 0.2s;
+            font-size: 1.3rem;
+            line-height: 1.3;
+            text-transform: uppercase;
+            
+            padding: 25px 0; /* Espaciado vertical generoso */
+            border-bottom: 1px solid #000; /* Línea divisoria negra gruesa */
+            transition: transform 0.1s;
         }
 
-        .option:hover {
-            background-color: rgba(255,255,255,0.2);
+        /* Quitar el borde de la última opción si se desea, 
+           aunque la referencia parece tenerlo. Comenta esto si quieres quitarlo. */
+        .option:last-child {
+             border-bottom: none; 
         }
 
-        /* Estilo del radio button simulado */
+        /* Efecto visual al hacer click */
+        .option:active {
+            background-color: rgba(0,0,0,0.1); /* Oscurecer un poco al clic */
+        }
+
+        /* Estilo del radio button simulado (CÍRCULO) */
         .circle {
-            height: 15px;
-            margin-right: 5px;
-            width: 15px;
+            height: 16px; /* Más grande */
+            width: 16px;  /* Más grande */
             background-color: #fff;
-            border: 3px solid #000;
+            border: 4px solid #000; /* Borde muy grueso */
             border-radius: 50%;
-            margin-right: 0;
-            display: inline-block;
-            vertical-align: top;
+            margin-right: 20px;
+            flex-shrink: 0; /* Evita que se aplaste */
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
+        /* Punto central al seleccionar */
         .option.selected .circle::after {
             content: '';
-            width: 10px;
-            height: 10px;
-            background-color: #2e9aff; /* Azul claro para selección */
+            width: 12px;
+            height: 12px;
+            /* Usamos el azul para mantener la funcionalidad de selección, 
+               puedes cambiarlo a #000 si prefieres */
+            background-color: #2e9aff; 
             border-radius: 50%;
         }
 
         .option span{
-            max-width: 70%;
+            font: .9rem/1.1 'Druk Wide';
+            font-style: italic;
+            line-height: 1.3;
+            max-width: 85%;
             display: inline-block;
             vertical-align: top;           
         }
@@ -402,7 +433,7 @@ img.logos{
             gap: 10px;
             overflow-x: auto; /* Permite scroll horizontal en móviles si no caben */
             padding-bottom: 30px;
-            max-width: 500px;
+            max-width: 600px;
             margin: 0 auto;
             justify-content: space-between;
         }
@@ -799,6 +830,11 @@ img.logos{
                 align-items: center;
                 text-align: center;
                 gap: 20px;
+                padding: 0 10px;
+            }
+            .app-desc{
+                font-size: 1.1rem;
+                line-height: 1.4;
             }
             
             .ratings-row {
@@ -904,7 +940,7 @@ img.logos{
         }
 
         /* Responsive: En móviles poner una sola columna */
-        @media (max-width: 600px) {
+        @media (max-width: 640px) {
             .books-container {
                 grid-template-columns: 1fr;
                 gap: 40px;
@@ -918,13 +954,37 @@ img.logos{
             }
             
             .book-card {
-                padding: 0;
+                border-bottom: 2px solid #00c3ff;
+                margin: 0 auto;
+                max-width: 80%;
+                padding: 0 0 20px 0 !important;
                 align-items: center;
                 text-align: center;
             }
             
             .book-cover {
                 margin-bottom: 20px;
+            }
+            .book-title{
+                font-size: 1.8rem;
+            }
+            .book-author{
+                font-size: 1.6rem;
+            }
+            .book-desc{
+                font-size: 1.2rem;
+            }
+            .podcast-desc{
+                font-size: 1.2rem;
+            }
+            .main-libros h3,
+            body .main-influencers h3{
+                font: 1.6rem / 1.2 'Druk Wide';
+            }
+            .profiles-container{
+                box-sizing: border-box;
+                padding: 0 10px;
+                width: 95%;
             }
         }
 
@@ -1101,7 +1161,7 @@ img.logos{
         font: 1.8rem / 1.1 'Druk Wide';
         font-style: italic;
         margin: 0 auto;
-        max-width: 600px;
+        max-width: 400px;
         padding: 30px 0 0;
         text-align: center;
         text-transform: uppercase;
@@ -1187,13 +1247,65 @@ img.logos{
             font-weight: 400;
         }
 
+    img.bajada-desktop{
+        display: block;
+    }
+    img.bajada-movil{
+        display: none;
+    }
+
+
+.box-footer{
+    background: #25028f;
+    padding: 50px 0;
+}
+    .box-footer img{
+        display: block;
+        margin: 10px auto 30px;
+        max-width: 80px;
+    }
+    .box-footer ul{
+        padding: 0;
+        text-align: center;
+    }
+        .box-footer ul li{
+            margin: 0 auto 10px;
+        }
+            .box-footer ul li p{
+                color: #fff;
+                font: .9rem/1.2 arial;
+                margin: 0;
+            }
+                .box-footer ul li span{
+                    display: block;
+                    font-weight: bold;
+                    margin-bottom: 5px;
+                }
+
+
+#historia img,
+#batidos img,
+#alimentacion img,
+#gadgets img{
+    display: block;
+    margin: 0 auto;
+    max-width: 500px;
+}
+
 /* Responsive para móviles */
-@media (max-width: 600px) {
+@media (max-width: 640px) {
+
+    h1,
+    .main-calendario h3{
+        font-size: 1.6rem;
+    }
+
     .profile-name {
         font-size: 1.5rem;
     }
     .profile-item {
-        font-size: 1rem;
+        font-size: 1.1rem;
+        line-height: 1.3;
         text-align: center;
         flex-direction: column; /* En móvil muy estrecho, apilar bullet */
         gap: 5px;
@@ -1221,8 +1333,8 @@ img.logos{
     .runner-info p{
         font-size: 1.5rem;
     }
-    .video-container{
-        width: 71%;
+    .main-corredores .video-container{
+        width: 80%;
     }
     .main-rutas p{
         font: 1.1rem / 1.4 'arial';
@@ -1239,9 +1351,10 @@ img.logos{
             font: 1.8rem / 1.1 'Druk Wide';
         }
     .main-universo{
+        background-position: center -600px;
         padding-top: 15px;
     }
-        .universo-btn{
+        body .universo-btn{
             font-size: 1.1rem;
             min-width: 80%;
         }
@@ -1255,6 +1368,9 @@ img.logos{
                 margin: 10px auto 30px;
                 display: block;
             }
+    .contenido-inferior{
+        padding: 0;
+    }
 
     .calendar-container{
         box-sizing: border-box;
@@ -1263,6 +1379,67 @@ img.logos{
     .box-video-especialista{
         max-width: 90%;
         min-width: 90%;
+    }
+    .main-apps h3{
+        font: 1.6rem / 1.2 'Druk Wide';
+        padding: 0 10px;
+    }
+    .main-calendario h4{
+        font: 1.2rem / 1.3 'arial';
+        padding: 0 10px;
+    }
+    .event-desc{
+        font-size: 1.1rem;
+    }
+    .box-video-especialista p{
+        font: 1.2rem / 1.3 'arial';
+    }
+
+    img.bajada-desktop{
+        display: none;
+    }
+    img.bajada-movil{
+        display: block;
+    }
+
+}
+
+@media (max-width: 768px) {
+
+    .main-universo{        
+        padding-top: 100px;
+    }
+    body .video-container{
+        width: 37%;
+    }
+    .bg-planetas{
+        background: transparent;
+        margin-top: 0;
+    }
+    .universo-btn{
+            font-size: 1.1rem;
+            min-width: 50%;
+        }
+            .universo-btn:nth-child(1),
+            .universo-btn:nth-child(2),
+            .universo-btn:nth-child(3),
+            .universo-btn:nth-child(4) {
+                left: 0;
+                position: relative;
+                top: 0;
+                margin: 10px auto 30px;
+                display: block;
+            }
+
+}
+
+@media (max-width: 1024px) {
+
+    .bg-planetas{
+        width: 100%;
+    }
+    .video-container{
+        width: 28%;
     }
 
 }
