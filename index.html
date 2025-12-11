@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Runners 2025</title>
 
-    <link rel="stylesheet" href="./css/style.css?v28">
+    <link rel="stylesheet" href="./css/style.css?v29">
 </head>
 <body>
 
@@ -1107,116 +1107,120 @@
     <!-- slide videos corredores -->
     <script>
         const runnersData = [
-            {
-                // Corredor 1 
-                name: "Christina Ortiz",
-                age: "43 años",
-                videoUrl: "https://cdn.jwplayer.com/players/ySqnF956-sfGpVx0W.html",                 
-                statsImage: "./img/ruta-1-1.webp" 
-            },
-            {
-                // Corredor 2
-                name: "Dayani Chávez",
-                age: "43 años",
-                videoUrl: "https://cdn.jwplayer.com/players/tpa420Zk-sfGpVx0W.html",
-                statsImage: "./img/ruta-2.webp"
-            },
-            {
-                // Corredor 3 (SIN RUTA)
-                name: "Francesca Orrego",
-                age: "30 años",
-                videoUrl: "https://cdn.jwplayer.com/players/BuQCda2i-sfGpVx0W.html",
-                statsImage: "" // Vacío
-            },
-            {
-                // Corredor 4
-                name: "José Fernandez",
-                age: "68 años",
-                videoUrl: "https://cdn.jwplayer.com/players/AUDrAGCo-sfGpVx0W.html", 
-                statsImage: "./img/ruta-4.webp"
-            },
-            {
-                // Corredor 5
-                name: "Mauricio Rebaza",
-                age: "36 años",
-                videoUrl: "https://cdn.jwplayer.com/players/yvd4Pyp8-sfGpVx0W.html", 
-                statsImage: "./img/ruta-5.webp"
-            }
-        ];
+        {
+            // Corredor 1 
+            name: "Christina Ortiz",
+            age: "43 años",
+            videoUrl: "https://cdn.jwplayer.com/players/ySqnF956-sfGpVx0W.html",                 
+            statsImage: "./img/ruta-1-1.webp" 
+        },
+        {
+            // Corredor 2
+            name: "Dayani Chávez",
+            age: "43 años",
+            videoUrl: "https://cdn.jwplayer.com/players/tpa420Zk-sfGpVx0W.html",
+            statsImage: "./img/ruta-2.webp"
+        },
+        {
+            // Corredor 3 (SIN RUTA)
+            name: "Francesca Orrego",
+            age: "30 años",
+            videoUrl: "https://cdn.jwplayer.com/players/BuQCda2i-sfGpVx0W.html",
+            statsImage: "" // Vacío
+        },
+        {
+            // Corredor 4
+            name: "José Fernandez",
+            age: "68 años",
+            videoUrl: "https://cdn.jwplayer.com/players/AUDrAGCo-sfGpVx0W.html", 
+            statsImage: "./img/ruta-4.webp"
+        },
+        {
+            // Corredor 5
+            name: "Mauricio Rebaza",
+            age: "36 años",
+            videoUrl: "https://cdn.jwplayer.com/players/yvd4Pyp8-sfGpVx0W.html", 
+            statsImage: "./img/ruta-5.webp"
+        }
+    ];
 
-        // --- Elementos del DOM que vamos a actualizar ---
-        const nameEl = document.getElementById('runner-name');
-        const ageEl = document.getElementById('runner-age');
-        const videoFrameEl = document.getElementById('video-frame');
-        const statsImageEl = document.getElementById('stats-image');
-        // NUEVO: Seleccionamos el título de la ruta
-        const rutaTitleEl = document.getElementById('ruta-title'); 
+    // --- Elementos del DOM ---
+    const nameEl = document.getElementById('runner-name');
+    const ageEl = document.getElementById('runner-age');
+    const videoFrameEl = document.getElementById('video-frame');
+    const statsImageEl = document.getElementById('stats-image');
+    const rutaTitleEl = document.getElementById('ruta-title'); 
+    
+    const contentContainer = document.getElementById('dynamic-content');
+    const navThumbs = document.querySelectorAll('.profile-thumb');
+
+    // --- Función principal para cargar un corredor ---
+    // AÑADIDO: Parametro 'autoScroll' que por defecto es true
+    function loadRunner(index, autoScroll = true) {
         
-        const contentContainer = document.getElementById('dynamic-content');
-        const navThumbs = document.querySelectorAll('.profile-thumb');
+        const data = runnersData[index];
 
-        // --- Función principal para cargar un corredor ---
-        function loadRunner(index) {
-            // 1. Obtener datos del array
-            const data = runnersData[index];
+        // Reiniciar animación
+        contentContainer.classList.remove('fade-in');
+        void contentContainer.offsetWidth; 
+        contentContainer.classList.add('fade-in');
 
-            // 2. Reiniciar animación
-            contentContainer.classList.remove('fade-in');
-            void contentContainer.offsetWidth; // Truco para reiniciar animación CSS
-            contentContainer.classList.add('fade-in');
+        // Actualizar textos y video
+        nameEl.textContent = data.name;
+        ageEl.textContent = data.age;
+        videoFrameEl.src = data.videoUrl;
 
-            // 3. Actualizar textos
-            nameEl.textContent = data.name;
-            ageEl.textContent = data.age;
-            
-            // 4. Actualizar Video
-            videoFrameEl.src = data.videoUrl;
-
-            // 5. LÓGICA DE LA IMAGEN DE RUTA (FIX)
-            // Verificamos si hay imagen definida
-            if (data.statsImage && data.statsImage !== "") {
-                // SI HAY IMAGEN: Ponemos la ruta y mostramos los elementos
-                statsImageEl.src = data.statsImage;
-                statsImageEl.style.display = 'block'; // Mostrar imagen
-                rutaTitleEl.style.display = 'block';  // Mostrar título "Ruta habitual"
-            } else {
-                // NO HAY IMAGEN: Ocultamos ambos elementos
-                statsImageEl.style.display = 'none'; 
-                rutaTitleEl.style.display = 'none';
-            }
-
-            // 6. Actualizar visualmente la navegación (la línea blanca)
-            navThumbs.forEach(thumb => thumb.classList.remove('active'));
-            navThumbs[index].classList.add('active');
+        // Lógica de Imagen/Ruta
+        if (data.statsImage && data.statsImage !== "") {
+            statsImageEl.src = data.statsImage;
+            statsImageEl.style.display = 'block'; 
+            rutaTitleEl.style.display = 'block';  
+        } else {
+            statsImageEl.style.display = 'none'; 
+            rutaTitleEl.style.display = 'none';
         }
 
-        // INICIALIZACIÓN
-        loadRunner(0);
+        // Actualizar navegación
+        navThumbs.forEach(thumb => thumb.classList.remove('active'));
+        navThumbs[index].classList.add('active');
 
-        // --- FIX: PAUSAR VIDEO AL HACER SCROLL (SALIR DE PANTALLA) ---
-        const observerOptions = {
-            root: null,
-            threshold: 0.1 
-        };
-
-        const videoObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (!entry.isIntersecting) {
-                    const iframe = document.getElementById('video-frame');
-                    
-                    if (iframe && iframe.src && iframe.src !== "") {
-                        // Opción nuclear para detener reproducción
-                        const currentUrl = iframe.src;
-                        iframe.src = currentUrl; 
-                    }
-                }
+        // --- NUEVO: SCROLL SUAVE ---
+        // Si autoScroll es verdadero, bajamos suavemente hacia el contenido
+        if (autoScroll) {
+            contentContainer.scrollIntoView({ 
+                behavior: 'smooth', 
+                block: 'start' // Alinea el contenido al inicio de la vista
             });
-        }, observerOptions);
-
-        const videoContainerEl = document.querySelector('.video-container');
-        if (videoContainerEl) {
-            videoObserver.observe(videoContainerEl);
         }
+    }
+
+    // INICIALIZACIÓN
+    // Pasamos 'false' para que NO haga scroll al cargar la página por primera vez
+    loadRunner(0, false);
+
+    // --- FIX: PAUSAR VIDEO AL HACER SCROLL ---
+    const observerOptions = {
+        root: null,
+        threshold: 0.1 
+    };
+
+    const videoObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) {
+                const iframe = document.getElementById('video-frame');
+                
+                if (iframe && iframe.src && iframe.src !== "") {
+                    const currentUrl = iframe.src;
+                    iframe.src = currentUrl; 
+                }
+            }
+        });
+    }, observerOptions);
+
+    const videoContainerEl = document.querySelector('.video-container');
+    if (videoContainerEl) {
+        videoObserver.observe(videoContainerEl);
+    }
 
     </script>
 
