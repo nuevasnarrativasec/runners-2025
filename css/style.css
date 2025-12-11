@@ -278,10 +278,46 @@ img.logos{
         }
 
 .main-bajada{
-
-}   
+    position: relative;
+}       
     .main-bajada img{
         margin-bottom: -4px;
+    }
+    .box-texto-bajada{
+
+        margin: 0 auto;
+        position: absolute;
+
+        left: 0;
+        top: 20%;
+        transform: translate(0%,50%);
+        width: 100%;
+    }
+    .main-bajada h2{
+        color: #03c5ff;
+        font: 5rem/1.1 'Druk Wide';
+        font-style: italic;
+        margin: 0 auto;        
+        text-align: center;
+        text-transform: uppercase;  
+    }
+        .main-bajada h2 span{
+            color: #fff;
+            display: block;
+        }
+    .main-bajada p{
+        color: #fff;
+        font: 1.2rem/1.4 'arial';
+        margin: 10px auto 0;
+        max-width: 500px;
+        text-align: center;
+        text-shadow: 2px 2px 3px #000;
+    }
+    img.logo-auspicio{
+        left: 3%;
+        max-width: 150px;
+        position: absolute;
+        top: 25%;
     }
 
 .main-corredores{
@@ -1058,6 +1094,22 @@ img.logos{
             }
             .main-header{
                 overflow: hidden;
+            }
+            .box-texto-bajada{
+                top: 40px;
+            }
+            .main-bajada h2{
+                font: 1.3rem / 1.1 'Druk Wide';
+            }
+            .main-bajada p{
+                font: 1.1rem / 1.4 'arial';
+                padding: 0 10px;
+            }
+            img.logo-auspicio{
+                left: 5px;
+                max-width: 95px;
+                position: absolute;
+                top: 75px;
             }
         }
 
