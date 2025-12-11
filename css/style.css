@@ -1129,8 +1129,11 @@ img.logos{
                 top: 40px;
             }
             .main-bajada h2{
-                font: 1.8rem / 1.1 'Druk Wide';
+                font: 2.5em / 1.1 'Druk Wide';
             }
+                .main-bajada h2 span{
+                    font: 1.9rem / 1.1 'Druk Wide';
+                }
             .main-bajada p{
                 font: 1rem / 1.5 'arial';
                 margin: 10px 10px 0;
@@ -1179,6 +1182,26 @@ img.logos{
             }
             .indicacion-rutas{
                 display: block;
+            }
+            img.logos{
+                padding-top: 50px;
+            }
+            .main-corredores{
+                padding-top: 50px;
+            }
+
+            .nav-buttons{
+                display: block;                
+                text-align: center;
+            }
+                .nav-btn{
+                    display: inline-block;
+                    float: none;
+                    margin: 8px;
+                    vertical-align: top;
+                }
+            .fade-content{
+                margin-top: 10px;
             }
 
         }
