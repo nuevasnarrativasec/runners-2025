@@ -306,13 +306,16 @@ img.logos{
             display: block;
         }
     .main-bajada p{
-        color: #fff;
+        color: #000;
         font: 1.2rem/1.4 'arial';
         margin: 10px auto 0;
         max-width: 500px;
         text-align: center;
-        text-shadow: 2px 1px 2px #000;
     }
+        .main-bajada p span{
+            background-color: #fff;
+            padding: 5px;
+        }
     img.logo-auspicio{
         left: 3%;
         max-width: 150px;
