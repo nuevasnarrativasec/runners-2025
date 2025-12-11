@@ -1130,9 +1130,11 @@ img.logos{
             }
             .main-bajada h2{
                 font: 2.5em / 1.1 'Druk Wide';
+                font-style: italic;
             }
                 .main-bajada h2 span{
                     font: 1.9rem / 1.1 'Druk Wide';
+                    font-style: italic;
                 }
             .main-bajada p{
                 font: 1rem / 1.5 'arial';
