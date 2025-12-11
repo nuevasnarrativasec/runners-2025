@@ -306,16 +306,17 @@ img.logos{
             display: block;
         }
     .main-bajada p{
-        color: #000;
+        background-color: rgba(3%, 3%, 3%, 0.7);
+        border: 2px solid #03c5ff;
+        border-radius: 20px;
+        box-sizing: border-box;
+        color: #fff;
         font: 1.2rem/1.4 'arial';
-        margin: 10px auto 0;
-        max-width: 500px;
+        margin: 20px auto 0;
+        max-width: 550px;
+        padding: 20px;
         text-align: center;
     }
-        .main-bajada p span{
-            background-color: #fff;
-            padding: 5px;
-        }
     img.logo-auspicio{
         left: 3%;
         max-width: 150px;
@@ -1014,6 +1015,10 @@ img.logos{
             max-width: 500px;
         }
 
+        .indicacion-rutas{
+            display: none;
+        }
+
         /* Responsive: En móviles poner una sola columna */
         @media (max-width: 640px) {
 
@@ -1124,11 +1129,12 @@ img.logos{
                 top: 40px;
             }
             .main-bajada h2{
-                font: 1.3rem / 1.1 'Druk Wide';
+                font: 1.8rem / 1.1 'Druk Wide';
             }
             .main-bajada p{
-                font: 1.1rem / 1.4 'arial';
-                padding: 0 10px;
+                font: 1rem / 1.5 'arial';
+                margin: 10px 10px 0;
+                padding: 8px 10px;                
             }
             img.logo-auspicio{
                 left: 5px;
@@ -1170,6 +1176,9 @@ img.logos{
             }
             .box-indicador{
                 display: none;
+            }
+            .indicacion-rutas{
+                display: block;
             }
 
         }
@@ -1459,3 +1468,26 @@ img.logos{
                     font-weight: bold;
                     margin-bottom: 5px;
                 }
+
+
+.indicacion-corredores{
+    margin-bottom: 20px;
+}
+    .indicacion-corredores img{
+        display: block;
+        margin: 0 auto;
+        max-width: 30px;
+    }
+    .indicacion-corredores span{
+        color: #fff;
+        display: block;
+        font: 1rem/1.2 'arial';
+        text-align: center;
+    }
+.indicacion-rutas{
+    margin-bottom: 10px;
+}
+    .indicacion-rutas span{
+        color: #000;
+        margin: 5px auto;
+    }
