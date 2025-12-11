@@ -1,7 +1,7 @@
 @font-face {
     font-family: 'Druk Wide Medium Trial';
-    src: url('../fonts/DrukWide-MediumItalic.woff2') format('woff2'),
-        url('../fonts/DrukWide-MediumItalic.woff') format('woff');
+    src: url('https://nuevasnarrativasec.github.io/runners-2025/fonts/DrukWide-MediumItalic.woff2') format('woff2'),
+        url('https://nuevasnarrativasec.github.io/runners-2025/fonts/DrukWide-MediumItalic.woff') format('woff');
     font-weight: 500;
     font-style: italic;
     font-display: swap;
@@ -9,8 +9,8 @@
 
 @font-face {
     font-family: 'Druk Wide Bold Trial';
-    src: url('../fonts/DrukWide-BoldItalic.woff2') format('woff2'),
-        url('../fonts/DrukWide-BoldItalic.woff') format('woff');
+    src: url('https://nuevasnarrativasec.github.io/runners-2025/fonts/DrukWide-BoldItalic.woff2') format('woff2'),
+        url('https://nuevasnarrativasec.github.io/runners-2025/fonts/DrukWide-BoldItalic.woff') format('woff');
     font-weight: bold;
     font-style: italic;
     font-display: swap;
@@ -18,8 +18,8 @@
 
 @font-face {
     font-family: 'Druk Wide';
-    src: url('../fonts/DrukWide-Bold.woff2') format('woff2'),
-        url('../fonts/DrukWide-Bold.woff') format('woff');
+    src: url('https://nuevasnarrativasec.github.io/runners-2025/fonts/DrukWide-Bold.woff2') format('woff2'),
+        url('https://nuevasnarrativasec.github.io/runners-2025/fonts/DrukWide-Bold.woff') format('woff');
     font-weight: bold;
     font-style: normal;
     font-display: swap;
@@ -27,8 +27,8 @@
 
 @font-face {
     font-family: '.';
-    src: url('../fonts/2dfadfc01a54cae1020852bdf97d432e.woff2') format('woff2'),
-        url('../fonts/2dfadfc01a54cae1020852bdf97d432e.woff') format('woff');
+    src: url('https://nuevasnarrativasec.github.io/runners-2025/fonts/2dfadfc01a54cae1020852bdf97d432e.woff2') format('woff2'),
+        url('https://nuevasnarrativasec.github.io/runners-2025/fonts/2dfadfc01a54cae1020852bdf97d432e.woff') format('woff');
     font-weight: 900;
     font-style: italic;
     font-display: swap;
@@ -48,9 +48,59 @@ body, html {
 }
 
 .main-header{
-    background: url('../img/bg-header.jpg?v2') no-repeat center top;
+    background: url('https://nuevasnarrativasec.github.io/runners-2025/img/bg-header.jpg?v2') no-repeat center top;
     background-size: 100%;
 }
+
+                #social{
+                    position: absolute;
+                    right: 10px;
+                    top: 10px;
+                    z-index: 600;
+                    margin: 0;
+                }
+                #social ul{
+                    display: inline-block;
+                    margin: 0 auto;
+                    padding: 0;
+                    vertical-align: middle;
+                }
+                    #social ul li{
+                        display: inline-block;
+                        margin: 0 3px;
+                        vertical-align: middle;
+                    }
+                        #social ul li a{
+                            height: 36px;
+                            width: 36px;
+                        }
+                        #fb{
+                            background: url(https://d1ts5g4ys243sh.cloudfront.net/proyectos_especiales_prod/especiales-multimedia/abuso-infantil/img/fb-icon-negro.png?v2) no-repeat 0 0;
+                            background-size: 100% !important;
+                            border: none;
+                            display: inline-block;
+                            height: 36px;
+                            text-indent: -9999px;
+                            width: 36px;
+                        }
+                        #wst{                
+                            background: url(https://d1ts5g4ys243sh.cloudfront.net/proyectos_especiales_prod/especiales-multimedia/abuso-infantil/img/wsp-icon-negro.png?v2) no-repeat 0 0 !important;
+                            background-size: 100% !important;
+                            border: none;
+                            display: none;
+                            height: 36px;
+                            text-indent: -9999px;
+                            width: 36px;
+                        }
+                        #tw{            
+                            background: url(https://d1ts5g4ys243sh.cloudfront.net/proyectos_especiales_prod/especiales-multimedia/abuso-infantil/img/tw-icon-negro.png?v2) no-repeat 0 0 !important;
+                            background-size: 100% !important;
+                            border: none;
+                            display: inline-block;
+                            height: 36px;
+                            text-indent: -9999px;
+                            width: 36px;
+                        } 
 
 img.logos{
     display: block;
@@ -677,7 +727,7 @@ img.logos{
 
         }
         .bg-planetas{
-            background: url('../img/planetas.webp') center top no-repeat ;
+            background: url('https://nuevasnarrativasec.github.io/runners-2025/img/planetas.webp') center top no-repeat ;
             background-size: 100%;
             height: 360px;
             margin: 0 auto;
@@ -910,7 +960,7 @@ img.logos{
 .main-libros{
     background-color: #260682;
     background-color: linear-gradient(180deg, rgba(38, 6, 130, 1) 0%, rgba(37, 2, 142, 1) 100%);
-    background-image: url('../img/bg-bottom-libros.jpg');
+    background-image: url('https://nuevasnarrativasec.github.io/runners-2025/img/bg-bottom-libros.jpg');
     background-position: bottom;
     background-repeat: no-repeat;
     background-size: 100%;
@@ -1215,6 +1265,9 @@ img.logos{
             .main-anatomia .expert-name,
             .expert-role{
                 text-align: center;
+            }
+            #wst{
+                display: inline-block;
             }
 
         }
