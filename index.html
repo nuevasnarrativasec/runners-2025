@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Runners 2025</title>
 
-    <link rel="stylesheet" href="./css/style.css?v29">
+    <link rel="stylesheet" href="./css/style.css?v30">
 </head>
 <body>
 
@@ -1422,7 +1422,6 @@
             allButtons.forEach(btn => btn.classList.remove('active'));
 
             // Agregamos la clase 'active' SOLO al botón que se presionó
-            // (event.currentTarget asegura que tomamos el botón, aunque clickees en el texto)
             event.currentTarget.classList.add('active');
 
             // 2. MANEJO DE CONTENIDO
@@ -1432,8 +1431,16 @@
 
             // Mostramos SOLO la caja que coincida con el ID enviado
             const selectedBox = document.getElementById(categoryId);
+            
             if (selectedBox) {
                 selectedBox.classList.add('active-box');
+
+                // --- NUEVO: SCROLL SUAVE AL CONTENIDO ---
+                // Esto hace que la pantalla baje automáticamente hasta la caja abierta
+                selectedBox.scrollIntoView({ 
+                    behavior: 'smooth', 
+                    block: 'start' // 'start' intenta poner el inicio del div al inicio de la pantalla
+                });
             }
         }
     </script>
