@@ -48,7 +48,7 @@ body, html {
 }
 
 .main-header{
-    background: url('https://nuevasnarrativasec.github.io/runners-2025/img/bg-header.jpg?v2') no-repeat center top;
+    background: url('https://nuevasnarrativasec.github.io/runners-2025/img/bg-header.jpg?v2') no-repeat center -50px;
     background-size: 100%;
 }
 
@@ -107,7 +107,7 @@ img.logos{
     display: block;
     margin: 0 auto;
     max-width: 300px;
-    padding-top: 180px;
+    padding-top: 0;
 }
 
 /* --- Estilos del Contenedor del Quiz --- */
