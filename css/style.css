@@ -521,10 +521,10 @@ img.logos{
     /* --- BOTONES DE NAVEGACIÓN --- */
         .nav-buttons {
             display: flex;
-            gap: 10px;
+            gap: 5px;
             overflow-x: auto; /* Permite scroll horizontal en móviles si no caben */
             padding-bottom: 30px;
-            max-width: 600px;
+            max-width: 585px;
             margin: 0 auto;
             justify-content: space-between;
         }
@@ -533,7 +533,7 @@ img.logos{
             background-color: #fff;
             border: 1px solid #ccc;
             border-radius: 50px; /* Borde de pastilla */
-            padding: 10px 20px;
+            padding: 10px 11px;
             font-size: 0.85rem;
             font-weight: 700;
             cursor: pointer;
